@@ -37,7 +37,7 @@ function Login() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@wtech.com"
+              placeholder="Digite seu Gmail"
               required
             />
           </div>
@@ -65,7 +65,7 @@ function Login() {
         </button>
 
         <div className="demoAccess">
-          Acesso inicial: <strong>admin@wtech.com</strong> / <strong>123456</strong>
+         
         </div>
 
         <Link to="/" className="backLink">Voltar ao site</Link>
