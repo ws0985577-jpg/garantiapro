@@ -27,7 +27,7 @@ function Login() {
       <form className="loginCard" onSubmit={fazerLogin}>
         <div className="loginLogo"><ShieldCheck size={34} /></div>
         <h1>Área administrativa</h1>
-        <p>Entre para administrar as garantias da sua empresa.</p>
+        <p>Entre para administrar as garantias da GarantiaPro.</p>
 
         <label>
           E-mail
