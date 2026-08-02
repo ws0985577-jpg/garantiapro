@@ -22,7 +22,7 @@ function criarFormularioInicial() {
 
   try {
     const configuracoes = JSON.parse(
-      localStorage.getItem("wtech_configuracoes") || "{}"
+      localStorage.getItem("garantiapro_configuracoes") || "{}"
     );
 
     garantiaPadrao = String(configuracoes.garantiaPadrao || "90");

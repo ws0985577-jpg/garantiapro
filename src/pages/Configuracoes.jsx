@@ -11,7 +11,7 @@ import {
   Upload,
 } from "lucide-react";
 
-const CONFIG_KEY = "wtech_configuracoes";
+const CONFIG_KEY = "garantiapro_configuracoes";
 
 const configuracaoInicial = {
   nomeEmpresa: "GarantiaPro",
@@ -21,7 +21,7 @@ const configuracaoInicial = {
   endereco: "",
   instagram: "",
   garantiaPadrao: "90",
-  logoUrl: "/logo-wtech.png",
+  logoUrl: "/logo-garantiaPro.png",
 };
 
 function Configuracoes() {
@@ -263,7 +263,7 @@ function Configuracoes() {
                   name="email"
                   value={formulario.email}
                   onChange={atualizarCampo}
-                  placeholder="contato@wtech.com"
+                  placeholder="contato@garantiapro.com
                 />
               </label>
             </div>
@@ -284,7 +284,7 @@ function Configuracoes() {
                 name="instagram"
                 value={formulario.instagram}
                 onChange={atualizarCampo}
-                placeholder="@wtech"
+                placeholder="@garantiapro
               />
             </label>
 
