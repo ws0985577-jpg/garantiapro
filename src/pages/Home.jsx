@@ -38,7 +38,7 @@ function Home() {
               <input
                 value={codigo}
                 onChange={(e) => setCodigo(e.target.value)}
-                placeholder="Ex.: WTECH-2026-0001"
+                placeholder="Ex.: 865723045678912"
               />
               <button type="submit">
                 <Search size={20} />
