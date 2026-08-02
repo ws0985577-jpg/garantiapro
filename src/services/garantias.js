@@ -162,7 +162,7 @@ export async function buscarGarantia(termo) {
   const { data, error } = await supabase
     .from("garantias")
     .select("*")
-    .or(`codigo.eq.${busca},imei.eq.${busca}`)
+    .or(`imei.eq.${busca}`)
     .limit(1);
 
   if (error) {
