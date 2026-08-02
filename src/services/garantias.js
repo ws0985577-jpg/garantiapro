@@ -44,6 +44,7 @@ export async function enviarFotosAparelho(arquivos) {
   return urls;
 }
 
+
 function converterGarantia(item) {
   return {
     id: item.id,
@@ -64,6 +65,7 @@ function converterGarantia(item) {
   };
 }
 
+
 function gerarCodigo() {
   const ano = new Date().getFullYear();
   const numero = String(Date.now()).slice(-6);
@@ -71,56 +73,111 @@ function gerarCodigo() {
   return `GAR-${ano}-${numero}`;
 }
 
+
 export async function listarGarantias() {
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+
+  if (!user) {
+    throw new Error("Usuário não está logado.");
+  }
+
+
   const { data, error } = await supabase
     .from("garantias")
     .select("*")
+    .eq("user_id", user.id)
     .order("created_at", { ascending: false });
+
 
   if (error) {
     throw new Error(error.message);
   }
 
+
   return (data || []).map(converterGarantia);
 }
 
+
+
 export async function cadastrarGarantia(dados) {
+
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+
+  if (!user) {
+    throw new Error("Usuário não está logado.");
+  }
+
+
   const dataServico = new Date(
     `${dados.dataServico}T12:00:00`
   );
 
+
   const validade = new Date(dataServico);
+
 
   validade.setDate(
     validade.getDate() + Number(dados.diasGarantia)
   );
 
+
   const pecaId = dados.pecaId || null;
+
 
   const quantidadePeca = pecaId
     ? Number(dados.quantidadePeca || 0)
     : 0;
 
+
   const custoPeca = pecaId
     ? Number(dados.custoPeca || 0)
     : 0;
 
+
+
   const novaGarantia = {
+
     codigo: gerarCodigo(),
+
     cliente: dados.cliente.trim(),
+
     telefone: dados.telefone.trim(),
+
     aparelho: dados.aparelho.trim(),
+
     imei: dados.imei.trim(),
+
     servico: dados.servico.trim(),
+
     valor: dados.valor ? Number(dados.valor) : null,
+
     data_servico: dados.dataServico,
+
     validade: validade.toISOString().slice(0, 10),
+
     observacoes: dados.observacoes.trim(),
+
     fotos_url: dados.fotosUrl || [],
+
     peca_id: pecaId,
+
     quantidade_peca: quantidadePeca,
+
     custo_peca: custoPeca,
+
+    user_id: user.id,
+
   };
+
+
 
   const { data, error } = await supabase
     .from("garantias")
@@ -128,11 +185,16 @@ export async function cadastrarGarantia(dados) {
     .select()
     .single();
 
+
+
   if (error) {
     throw new Error(error.message);
   }
 
+
+
   if (pecaId && quantidadePeca > 0) {
+
     const { error: erroEstoque } = await supabase.rpc(
       "baixar_estoque_garantia",
       {
@@ -142,22 +204,34 @@ export async function cadastrarGarantia(dados) {
       }
     );
 
+
     if (erroEstoque) {
+
       await supabase
         .from("garantias")
         .delete()
         .eq("id", data.id);
 
+
       throw new Error(
         `Erro ao baixar estoque: ${erroEstoque.message}`
       );
+
     }
+
   }
-return converterGarantia(data);
+
+
+  return converterGarantia(data);
+
 }
 
+
+
 export async function buscarGarantia(termo) {
+
   const busca = termo.trim();
+
 
   const { data, error } = await supabase
     .from("garantias")
@@ -165,47 +239,70 @@ export async function buscarGarantia(termo) {
     .or(`imei.eq.${busca},codigo.eq.${busca}`)
     .limit(1);
 
+
   if (error) {
     throw new Error(error.message);
   }
 
+
   return data?.[0]
     ? converterGarantia(data[0])
     : null;
+
 }
 
+
+
 export async function excluirGarantia(id) {
+
   const { error } = await supabase
     .from("garantias")
     .delete()
     .eq("id", id);
 
+
   if (error) {
     throw new Error(error.message);
   }
+
 }
 
-export async function atualizarGarantia(
-  codigo,
-  dados
-) {
+
+
+export async function atualizarGarantia(codigo, dados) {
+
   const atualizacao = {
+
     cliente: dados.cliente.trim(),
+
     telefone: dados.telefone.trim(),
+
     aparelho: dados.aparelho.trim(),
+
     imei: dados.imei.trim(),
+
     servico: dados.servico.trim(),
+
     valor: dados.valor
       ? Number(dados.valor)
       : null,
+
     data_servico: dados.dataServico,
+
     validade: dados.validade,
+
     observacoes: dados.observacoes.trim(),
+
   };
 
+
   if (dados.fotosUrl !== undefined) {
+
     atualizacao.fotos_url = dados.fotosUrl || [];
+
   }
+
+
 
   const { data, error } = await supabase
     .from("garantias")
@@ -214,22 +311,28 @@ export async function atualizarGarantia(
     .select()
     .single();
 
+
+
   if (error) {
     throw new Error(error.message);
   }
 
+
   return converterGarantia(data);
+
 }
 
 export function statusGarantia(validade) {
+
   const hoje = new Date();
-  hoje.setHours(0, 0, 0, 0);
+  hoje.setHours(0,0,0,0);
 
   const fim = new Date(`${validade}T12:00:00`);
 
   const diferenca = Math.ceil(
     (fim.getTime() - hoje.getTime()) / 86400000
   );
+
 
   if (diferenca < 0) {
     return {
@@ -239,6 +342,7 @@ export function statusGarantia(validade) {
     };
   }
 
+
   if (diferenca <= 15) {
     return {
       texto: "Próxima do vencimento",
@@ -247,22 +351,32 @@ export function statusGarantia(validade) {
     };
   }
 
+
   return {
     texto: "Ativa",
     tipo: "ativa",
     dias: diferenca,
   };
+
 }
 
+
+
 export function formatarData(data) {
+
   if (!data) return "-";
+
 
   return new Date(
     `${data}T12:00:00`
   ).toLocaleDateString("pt-BR");
+
 }
 
+
+
 export function formatarValor(valor) {
+
   if (
     valor === "" ||
     valor === null ||
@@ -271,8 +385,10 @@ export function formatarValor(valor) {
     return "-";
   }
 
+
   return Number(valor).toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
   });
+
 }

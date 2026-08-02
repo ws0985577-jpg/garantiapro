@@ -1055,3 +1055,239 @@ th { color: #69758a; font-size: 13px; }
   color: #b62424;
   font-weight: 700;
 }
+
+/* =========================
+   PAINEL ADMINISTRATIVO
+========================= */
+
+.dashboardPage {
+  padding: 35px;
+  background: #f4f7fb;
+  min-height: 100vh;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.pageHeader span {
+  color: #146cff;
+  font-weight: bold;
+}
+
+.pageHeader h1 {
+  font-size: 38px;
+  color: #07111f;
+}
+
+.pageHeader p {
+  color: #69758a;
+}
+
+.btnPrimary {
+  background: #146cff;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border: none;
+  font-weight: bold;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.statsGrid article {
+  background: white;
+  padding: 22px;
+  border-radius: 18px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.statIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.active {
+  background:#dff8ea;
+  color:#168748;
+}
+
+.warning {
+  background:#fff1d6;
+  color:#c27a00;
+}
+
+.expired {
+  background:#ffe3e3;
+  color:#d00000;
+}
+
+.money {
+  background:#dceaff;
+  color:#146cff;
+}
+
+.panel {
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.panelHeader {
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+
+.status.ativa {
+  background:#dff8ea;
+  color:#168748;
+  padding:7px 14px;
+  border-radius:20px;
+}
+
+.dashboardActions {
+  display:flex;
+  gap:8px;
+}
+
+.dashboardActions button,
+.dashboardActions a {
+  width:35px;
+  height:35px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  border:0;
+  background:#eef3ff;
+}
+
+.deleteAction {
+  color:red;
+}
+/* ===== CORES DO PAINEL GARANTIAPRO ===== */
+
+.dashboardPage {
+  background: #f4f7fb !important;
+  color: #172033;
+}
+
+.dashboardPage h1,
+.dashboardPage h2,
+.dashboardPage h3 {
+  color: #07111f;
+}
+
+.panel {
+  background: #ffffff !important;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.statsGrid article {
+  background: #ffffff !important;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+.statIcon {
+  background: #e8f1ff;
+  color: #146cff;
+}
+
+.statIcon.active {
+  background: #e8f8ef;
+  color: #168748;
+}
+
+.statIcon.warning {
+  background: #fff4dc;
+  color: #d98a00;
+}
+
+.statIcon.expired {
+  background: #ffeaea;
+  color: #d93025;
+}
+
+.statIcon.money {
+  background: #e8f1ff;
+  color: #146cff;
+}
+
+
+.btnPrimary {
+  background: #146cff !important;
+  color: white !important;
+  border-radius: 12px;
+}
+
+.btnPrimary:hover {
+  background: #0756d5 !important;
+}
+
+
+table {
+  background: white;
+}
+
+thead {
+  background: #f4f7fb;
+}
+
+th {
+  color: #07111f;
+}
+
+td {
+  color: #344054;
+}
+
+
+.status.ativa {
+  background: #e7f8ef;
+  color: #168748;
+}
+
+
+.status.proxima {
+  background: #fff4dc;
+  color: #d98a00;
+}
+
+
+.status.vencida {
+  background: #ffeaea;
+  color: #d93025;
+}
+
+
+.smallSearch {
+  background: white;
+  border: 1px solid #e5e7eb;
+}
+
+
+.smallSearch input {
+  color: #172033;
+}

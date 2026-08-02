@@ -9,19 +9,19 @@ function Login() {
   const [erro, setErro] = useState("");
   const navigate = useNavigate();
 
-  function fazerLogin(event) {
-    event.preventDefault();
-    setErro("");
+async function fazerLogin(event) {
+  event.preventDefault();
+  setErro("");
 
-    const resultado = entrar(email, senha);
+  const resultado = await entrar(email, senha);
 
-    if (!resultado.sucesso) {
-      setErro(resultado.mensagem);
-      return;
-    }
-
-    navigate("/admin");
+  if (!resultado.sucesso) {
+    setErro(resultado.mensagem);
+    return;
   }
+
+  navigate("/admin");
+}
 
   return (
     <main className="loginPage">

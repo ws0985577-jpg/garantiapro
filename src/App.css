@@ -333,3 +333,16 @@ footer {
     grid-column: auto;
   }
 }
+
+.dashboardPage {
+  background: #f4f7fb !important;
+}
+
+.panel {
+  background: white !important;
+}
+
+.btnPrimary {
+  background: #146cff !important;
+  color: white !important;
+}

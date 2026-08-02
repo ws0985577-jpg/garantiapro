@@ -30,6 +30,7 @@ function Cadastro() {
       email: dados.email,
       password: dados.senha,
       options: {
+        emailRedirectTo: "http://localhost:5173/login",
         data: {
           empresa: dados.empresa,
         },
@@ -41,17 +42,24 @@ function Cadastro() {
       return;
     }
 
-    alert("Conta criada com sucesso!");
+    alert(
+      "Conta criada! Verifique seu Gmail para confirmar o cadastro."
+    );
+
     navigate("/login");
   }
 
   return (
     <main className="loginPage">
 
-      <form className="loginCard" onSubmit={criarConta}>
+      <form
+        className="loginCard"
+        onSubmit={criarConta}
+        autoComplete="off"
+      >
 
-        <div>
-          <ShieldCheck size={45}/>
+        <div className="loginLogo">
+          <ShieldCheck size={34} />
         </div>
 
         <h1>Criar conta</h1>
@@ -69,6 +77,8 @@ function Cadastro() {
             placeholder="Nome da empresa"
             value={dados.empresa}
             onChange={alterar}
+            autoComplete="off"
+            required
           />
 
         </label>
@@ -83,6 +93,8 @@ function Cadastro() {
             placeholder="Digite seu Gmail"
             value={dados.email}
             onChange={alterar}
+            autoComplete="off"
+            required
           />
 
         </label>
@@ -97,6 +109,8 @@ function Cadastro() {
             placeholder="Crie uma senha"
             value={dados.senha}
             onChange={alterar}
+            autoComplete="new-password"
+            required
           />
 
         </label>
@@ -109,12 +123,15 @@ function Cadastro() {
         )}
 
 
-        <button className="btn btnPrimary">
+        <button
+          className="btn btnPrimary loginButton"
+          type="submit"
+        >
           Criar conta
         </button>
 
 
-        <Link to="/login">
+        <Link to="/login" className="backLink">
           Já tenho conta
         </Link>
 

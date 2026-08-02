@@ -1,21 +1,44 @@
+import { supabase } from "./supabase";
+
 const CHAVE_LOGIN = "garantiapro_admin_logado";
 
-export function entrar(email, senha) {
-  const emailAdmin = import.meta.env.VITE_ADMIN_EMAIL || "admin@garantiapro.com"
-  const senhaAdmin = import.meta.env.VITE_ADMIN_SENHA || "123456";
 
-  if (email === emailAdmin && senha === senhaAdmin) {
-    localStorage.setItem(CHAVE_LOGIN, "true");
-    return { sucesso: true };
+export async function entrar(email, senha) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password: senha,
+  });
+
+
+  if (error) {
+    return {
+      sucesso: false,
+      mensagem: "E-mail ou senha incorretos.",
+    };
   }
 
-  return { sucesso: false, mensagem: "E-mail ou senha incorretos." };
+
+  localStorage.setItem(
+    CHAVE_LOGIN,
+    data.user.id
+  );
+
+
+  return {
+    sucesso: true,
+  };
 }
 
-export function sair() {
+
+export async function sair() {
+  await supabase.auth.signOut();
+
   localStorage.removeItem(CHAVE_LOGIN);
 }
 
+
 export function estaLogado() {
-  return localStorage.getItem(CHAVE_LOGIN) === "true";
+  return Boolean(
+    localStorage.getItem(CHAVE_LOGIN)
+  );
 }
