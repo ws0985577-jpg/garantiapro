@@ -263,7 +263,7 @@ function Configuracoes() {
                   name="email"
                   value={formulario.email}
                   onChange={atualizarCampo}
-                  placeholder="contato@garantiapro.com
+                  placeholder="contato@garantiapro.com"
                 />
               </label>
             </div>
@@ -284,7 +284,7 @@ function Configuracoes() {
                 name="instagram"
                 value={formulario.instagram}
                 onChange={atualizarCampo}
-                placeholder="@garantiapro
+                placeholder="@garantiapro"
               />
             </label>
 
