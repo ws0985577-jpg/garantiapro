@@ -30,8 +30,9 @@ function Home() {
 
             <h1>Consulte a garantia do seu aparelho</h1>
             <p>
-              Digite o código da garantia ou o IMEI informado no comprovante
-              entregue pela GarantiaPro..
+              <p>
+  Digite o IMEI do aparelho informado no comprovante entregue pela GarantiaPro.
+</p>
             </p>
 
             <form className="searchBox" onSubmit={consultar}>
