@@ -437,27 +437,39 @@ function Dashboard() {
                 </td>
 
 
-                <td>
+<td>
 
-                  <Link to={`/comprovante/${item.codigo}`}>
-                    <Eye size={18}/>
-                  </Link>
+  <div className="dashboardActions">
+
+    <Link
+      className="viewAction"
+      to={`/comprovante/${item.codigo}`}
+      title="Visualizar"
+    >
+      <Eye size={18}/>
+    </Link>
 
 
-                  <button
-                    onClick={()=>abrirWhatsApp(item)}
-                  >
-                    <MessageCircle size={18}/>
-                  </button>
+    <button
+      className="whatsappAction"
+      onClick={()=>abrirWhatsApp(item)}
+      title="WhatsApp"
+    >
+      <MessageCircle size={18}/>
+    </button>
 
 
-                  <button
-                    onClick={()=>remover(item.id)}
-                  >
-                    <Trash2 size={18}/>
-                  </button>
+    <button
+      className="deleteAction"
+      onClick={()=>remover(item.id)}
+      title="Excluir"
+    >
+      <Trash2 size={18}/>
+    </button>
 
-                </td>
+  </div>
+
+</td>
 
 
               </tr>

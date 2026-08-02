@@ -1179,7 +1179,27 @@ th { color: #69758a; font-size: 13px; }
   justify-content:center;
   border-radius:8px;
   border:0;
-  background:#eef3ff;
+}
+
+
+/* botão visualizar */
+.dashboardActions a {
+  background:#e8f1ff;
+  color:#146cff;
+}
+
+
+/* botão WhatsApp */
+.dashboardActions .whatsappAction {
+  background:#dcfce7;
+  color:#16a34a;
+}
+
+
+/* botão excluir */
+.dashboardActions .deleteAction {
+  background:#ffe4e6;
+  color:#dc2626;
 }
 
 .deleteAction {
@@ -1290,4 +1310,289 @@ td {
 
 .smallSearch input {
   color: #172033;
+}
+
+/* CORREÇÃO FINAL DOS BOTÕES DA TABELA */
+
+.dashboardActions {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+}
+
+.dashboardActions a,
+.dashboardActions button {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 10px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border: none !important;
+  background: #eef4ff !important;
+  color: #146cff !important;
+}
+
+.dashboardActions .whatsappAction {
+  background: #e7f8ef !important;
+  color: #16a34a !important;
+}
+
+.dashboardActions .deleteAction {
+  background: #ffeaea !important;
+  color: #dc2626 !important;
+}
+
+.dashboardActions svg {
+  stroke-width: 2.5;
+}/* ===== AJUSTE FINAL DASHBOARD GARANTIAPRO ===== */
+
+.dashboardPage {
+  padding: 35px;
+  background: #f4f7fb !important;
+  min-height: 100vh;
+  color: #172033;
+}
+
+
+/* TABELA */
+
+.panel {
+  background: #ffffff !important;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+
+.panel h2 {
+  color: #07111f !important;
+}
+
+.panel p {
+  color: #69758a;
+}
+
+
+/* CARDS */
+
+.statsGrid article {
+  background: #ffffff !important;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+
+.statsGrid small {
+  color:#69758a !important;
+}
+
+.statsGrid strong {
+  color:#07111f !important;
+}
+
+
+/* ICONES DOS CARDS */
+
+.statIcon.active {
+  background:#e7f8ef !important;
+  color:#168748 !important;
+}
+
+.statIcon.warning {
+  background:#fff4dc !important;
+  color:#d98a00 !important;
+}
+
+.statIcon.expired {
+  background:#ffeaea !important;
+  color:#d93025 !important;
+}
+
+.statIcon.money {
+  background:#e8f1ff !important;
+  color:#146cff !important;
+}
+
+
+/* BOTAO NOVA GARANTIA */
+
+.btnPrimary {
+  background:#146cff !important;
+  color:white !important;
+}
+
+
+/* BOTÕES DA TABELA */
+
+.dashboardActions {
+  display:flex !important;
+  gap:8px !important;
+}
+
+
+.dashboardActions a,
+.dashboardActions button {
+
+  width:38px !important;
+  height:38px !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  border-radius:10px !important;
+  border:none !important;
+
+}
+
+
+/* OLHO */
+
+.dashboardActions a {
+  background:#eef4ff !important;
+  color:#146cff !important;
+}
+
+
+/* WHATSAPP */
+
+.dashboardActions .whatsappAction {
+
+  background:#dcfce7 !important;
+  color:#16a34a !important;
+
+}
+
+
+/* EXCLUIR */
+
+.dashboardActions .deleteAction {
+
+  background:#fee2e2 !important;
+  color:#dc2626 !important;
+
+}
+
+
+/* TEXTO DA TABELA */
+
+table td {
+  color:#344054 !important;
+}
+
+table th {
+  color:#07111f !important;
+}
+
+
+/* PESQUISA */
+
+.smallSearch {
+
+ background:white !important;
+ border:1px solid #e5e7eb !important;
+
+}
+
+
+.smallSearch input {
+
+ color:#172033 !important;
+
+}
+/* CORES DOS BOTÕES DE AÇÃO DA GARANTIA */
+
+.dashboardActions a {
+  background: #e8f1ff !important;
+  color: #146cff !important;
+  border: none !important;
+}
+
+
+.dashboardActions .whatsappAction {
+  background: #dcfce7 !important;
+  color: #16a34a !important;
+  border: none !important;
+}
+
+
+.dashboardActions .deleteAction {
+  background: #ffe4e6 !important;
+  color: #dc2626 !important;
+  border: none !important;
+}
+
+
+.dashboardActions a:hover {
+  background: #146cff !important;
+  color: white !important;
+}
+
+
+.dashboardActions .whatsappAction:hover {
+  background: #16a34a !important;
+  color: white !important;
+}
+
+
+.dashboardActions .deleteAction:hover {
+  background: #dc2626 !important;
+  color: white !important;
+}
+/* FORÇAR CORES DOS BOTÕES DE AÇÃO */
+
+.dashboardActions a {
+  background: #e8f1ff !important;
+  color: #146cff !important;
+}
+
+.dashboardActions button.whatsappAction {
+  background: #dcfce7 !important;
+  color: #16a34a !important;
+}
+
+.dashboardActions button.deleteAction {
+  background: #ffe4e6 !important;
+  color: #dc2626 !important;
+}
+
+.dashboardActions svg {
+  width: 18px;
+  height: 18px;
+}
+.dashboardActions {
+  display:flex;
+  gap:8px;
+}
+
+
+.viewAction,
+.whatsappAction,
+.deleteAction {
+  width:35px;
+  height:35px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  border:none;
+}
+
+
+.viewAction {
+  background:#e8f1ff;
+  color:#146cff;
+}
+
+
+.whatsappAction {
+  background:#dcfce7;
+  color:#16a34a;
+}
+
+
+.deleteAction {
+  background:#ffe4e6;
+  color:#dc2626;
 }
