@@ -14,6 +14,7 @@ function Login() {
     setErro("");
 
     const resultado = entrar(email, senha);
+
     if (!resultado.sucesso) {
       setErro(resultado.mensagem);
       return;
@@ -25,14 +26,23 @@ function Login() {
   return (
     <main className="loginPage">
       <form className="loginCard" onSubmit={fazerLogin}>
-        <div className="loginLogo"><ShieldCheck size={34} /></div>
+
+        <div className="loginLogo">
+          <ShieldCheck size={34} />
+        </div>
+
         <h1>Área administrativa</h1>
-        <p>Entre para administrar as garantias da GarantiaPro.</p>
+
+        <p>
+          Entre para administrar as garantias da GarantiaPro.
+        </p>
 
         <label>
           E-mail
+
           <div className="inputIcon">
             <Mail size={19} />
+
             <input
               type="email"
               value={email}
@@ -43,10 +53,13 @@ function Login() {
           </div>
         </label>
 
+
         <label>
           Senha
+
           <div className="inputIcon">
             <LockKeyhole size={19} />
+
             <input
               type="password"
               value={senha}
@@ -57,18 +70,32 @@ function Login() {
           </div>
         </label>
 
-        {erro && <div className="errorMessage">{erro}</div>}
 
-        <button className="btn btnPrimary loginButton" type="submit">
+        {erro && (
+          <div className="errorMessage">
+            {erro}
+          </div>
+        )}
+
+
+        <button 
+          className="btn btnPrimary loginButton" 
+          type="submit"
+        >
           <LogIn size={20} />
           Entrar
         </button>
 
-        <div className="demoAccess">
-         
-        </div>
 
-        <Link to="/" className="backLink">Voltar ao site</Link>
+        <Link to="/cadastro" className="backLink">
+          Criar uma conta
+        </Link>
+
+
+        <Link to="/" className="backLink">
+          Voltar ao site
+        </Link>
+
       </form>
     </main>
   );
