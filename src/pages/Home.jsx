@@ -31,7 +31,7 @@ function Home() {
             <h1>Consulte a garantia do seu aparelho</h1>
             <p>
               Digite o código da garantia ou o IMEI informado no comprovante
-              entregue pela W-Tech.
+              entregue pela GarantiaPro..
             </p>
 
             <form className="searchBox" onSubmit={consultar}>
@@ -67,7 +67,7 @@ function Home() {
         </section>
       </main>
 
-      <footer>© 2026 W-Tech Assistência Técnica</footer>
+      <footer>© 2026 GarantiaPro Assistência Técnica</footer>
     </div>
   );
 }

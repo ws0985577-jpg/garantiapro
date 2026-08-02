@@ -85,7 +85,7 @@ function Comprovante() {
       : `55${telefoneLimpo}`;
 
     const mensagem = encodeURIComponent(
-      `Olá, ${garantia.cliente}! Segue o comprovante de garantia da W-Tech.\n\n` +
+      `Olá, ${garantia.cliente}! Segue o comprovante de garantia da GarantiaPro.\n\n` +
         `Aparelho: ${garantia.aparelho}\n` +
         `Serviço: ${garantia.servico}\n` +
         `Valor: ${formatarValor(garantia.valor)}\n` +
@@ -130,13 +130,13 @@ function Comprovante() {
         <header>
           <div className="receiptBrand">
             <img
-              src="/logo-wtech.png"
-              alt="Logo W-Tech"
+              src="/logo-garantiapro.png"
+              alt="Logo GarantiaPro"
               className="receiptLogo"
             />
 
             <div>
-              <h1>W-Tech</h1>
+              <h1>GarantiaPro</h1>
               <p>Assistência Técnica</p>
             </div>
           </div>

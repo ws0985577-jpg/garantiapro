@@ -7,7 +7,7 @@ function Navbar() {
       <Link to="/" className="brand">
         <span className="brandIcon"><ShieldCheck size={27} /></span>
         <span>
-          <strong>W-Tech</strong>
+          <strong>GarantiaPro</strong>
           <small>Assistência Técnica</small>
         </span>
       </Link>

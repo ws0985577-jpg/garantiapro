@@ -27,7 +27,7 @@ function LayoutAdmin() {
           </span>
 
           <div>
-            <strong>W-Tech</strong>
+            <strong>GarantiaPro</strong>
             <small>Sistema de Gestão</small>
           </div>
         </div>
