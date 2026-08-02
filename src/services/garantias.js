@@ -68,7 +68,7 @@ function gerarCodigo() {
   const ano = new Date().getFullYear();
   const numero = String(Date.now()).slice(-6);
 
-  return `WTECH-${ano}-${numero}`;
+  return `GAR-${ano}-${numero}`;
 }
 
 export async function listarGarantias() {
