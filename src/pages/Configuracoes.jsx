@@ -14,7 +14,7 @@ import {
 const CONFIG_KEY = "wtech_configuracoes";
 
 const configuracaoInicial = {
-  nomeEmpresa: "W-Tech",
+  nomeEmpresa: "GarantiaPro",
   subtitulo: "Assistência Técnica",
   whatsapp: "",
   email: "",
@@ -144,7 +144,7 @@ function Configuracoes() {
           <span>Painel administrativo</span>
           <h1>Configurações</h1>
           <p>
-            Personalize os dados e a identidade visual da W-Tech.
+            Personalize os dados e a identidade visual da GarantiaPro.
           </p>
         </div>
       </div>
@@ -230,7 +230,7 @@ function Configuracoes() {
                 name="nomeEmpresa"
                 value={formulario.nomeEmpresa}
                 onChange={atualizarCampo}
-                placeholder="W-Tech"
+                placeholder="GarantiaPro"
                 required
               />
             </label>

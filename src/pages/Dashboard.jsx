@@ -142,7 +142,7 @@ totais.ticketMedio =
       )}`;
 
     const mensagem = encodeURIComponent(
-      `Olá, ${item.cliente}! Segue o comprovante de garantia da W-Tech.\n\n` +
+      `Olá, ${item.cliente}! Segue o comprovante de garantia da GarantiaPro.\n\n` +
         `Aparelho: ${item.aparelho}\n` +
         `Serviço: ${item.servico}\n` +
         `Código: ${item.codigo}\n` +
@@ -161,7 +161,7 @@ totais.ticketMedio =
       <div className="pageHeader">
         <div>
           <span>Painel administrativo</span>
-          <h1>Dashboard W-Tech</h1>
+          <h1>Dashboard GarantiaPro</h1>
           <p>Gerencie todas as garantias da assistência técnica.</p>
         </div>
 

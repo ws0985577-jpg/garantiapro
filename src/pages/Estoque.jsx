@@ -149,7 +149,7 @@ function Estoque() {
         <div>
           <span>Painel administrativo</span>
           <h1>Estoque</h1>
-          <p>Gerencie todas as peças da W-Tech.</p>
+          <p>Gerencie todas as peças da GarantiaPro.</p>
         </div>
       </div>
 

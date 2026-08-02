@@ -127,7 +127,7 @@ function Clientes() {
         <div>
           <span>Painel administrativo</span>
           <h1>Clientes</h1>
-          <p>Cadastre e gerencie os clientes da W-Tech.</p>
+          <p>Cadastre e gerencie os clientes da GarantiaPro.</p>
         </div>
       </div>
 
@@ -292,7 +292,7 @@ function Clientes() {
             <div className="emptyState">
               <Users size={42} />
               <h3>Nenhum cliente encontrado</h3>
-              <p>Cadastre o primeiro cliente da W-Tech.</p>
+              <p>Cadastre o primeiro cliente da GarantiaPro.</p>
             </div>
           ) : (
             <div className="clientesList">

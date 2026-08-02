@@ -243,7 +243,7 @@ function Financeiro() {
           <span>Painel administrativo</span>
           <h1>Controle financeiro</h1>
           <p>
-            Acompanhe faturamento, gastos e lucro da W-Tech.
+            Acompanhe faturamento, gastos e lucro da GarantiaPro.
           </p>
         </div>
       </div>
@@ -501,7 +501,7 @@ function Financeiro() {
           <div className="emptyState">
             <ReceiptText size={42} />
             <h3>Nenhum gasto cadastrado</h3>
-            <p>Registre o primeiro gasto da W-Tech.</p>
+            <p>Registre o primeiro gasto da GarantiaPro.</p>
           </div>
         ) : (
           <div className="tableWrapper">
