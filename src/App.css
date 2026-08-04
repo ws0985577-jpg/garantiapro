@@ -346,3 +346,81 @@ footer {
   background: #146cff !important;
   color: white !important;
 }
+.empresaPage {
+  padding: 40px;
+  width: 100%;
+}
+
+.empresaPage h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #172033;
+}
+
+.empresaCard {
+  background: white;
+  padding: 35px;
+  border-radius: 18px;
+  max-width: 1000px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.grid div {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid label,
+.empresaCard label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.grid input,
+.empresaCard input,
+.empresaCard textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.mensagem {
+  width: 100%;
+  height: 100px;
+  margin-top: 15px;
+  resize: none;
+}
+
+.empresaCard button {
+  margin-top: 20px;
+  background: #146cff;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.empresaCard button:hover {
+  background: #0756d5;
+}
+
+@media(max-width:700px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+}

@@ -1,3 +1,4 @@
+import { supabase } from "../services/supabase";
 import { useEffect, useMemo, useState } from "react";
 import {
   ImagePlus,
@@ -212,11 +213,28 @@ function NovaGarantia() {
         telefone: formulario.telefone.trim(),
       });
 
+      const {
+  data: { user },
+} = await supabase.auth.getUser();
+
+
+const { data: empresa } = await supabase
+  .from("empresas")
+  .select("id")
+  .eq("user_id", user.id)
+  .single();
+
+
+if (!empresa) {
+  throw new Error("Nenhuma assistência cadastrada para este usuário.");
+}
+
 const garantia = await cadastrarGarantia({
   ...formulario,
   fotosUrl,
   pecaId: formulario.pecaId,
   quantidadePeca,
+  empresa_id: empresa.id,
   custoPeca: pecaSelecionada
     ? Number(pecaSelecionada.precoCompra || 0) * quantidadePeca
     : 0,

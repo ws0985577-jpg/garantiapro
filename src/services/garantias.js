@@ -49,6 +49,7 @@ function converterGarantia(item) {
   return {
     id: item.id,
     codigo: item.codigo,
+    user_id: item.user_id,
     cliente: item.cliente,
     telefone: item.telefone || "",
     aparelho: item.aparelho,
@@ -85,7 +86,8 @@ export async function listarGarantias() {
     throw new Error("Usuário não está logado.");
   }
 
-
+  console.log("USUARIO LOGADO:", user.email, user.id);
+  
   const { data, error } = await supabase
     .from("garantias")
     .select("*")
@@ -143,39 +145,42 @@ export async function cadastrarGarantia(dados) {
 
 
 
-  const novaGarantia = {
 
-    codigo: gerarCodigo(),
 
-    cliente: dados.cliente.trim(),
 
-    telefone: dados.telefone.trim(),
+    const novaGarantia = {
+  codigo: gerarCodigo(),
 
-    aparelho: dados.aparelho.trim(),
+  cliente: dados.cliente.trim(),
 
-    imei: dados.imei.trim(),
+  telefone: dados.telefone.trim(),
 
-    servico: dados.servico.trim(),
+  aparelho: dados.aparelho.trim(),
 
-    valor: dados.valor ? Number(dados.valor) : null,
+  imei: dados.imei.trim(),
 
-    data_servico: dados.dataServico,
+  servico: dados.servico.trim(),
 
-    validade: validade.toISOString().slice(0, 10),
+  valor: dados.valor ? Number(dados.valor) : null,
 
-    observacoes: dados.observacoes.trim(),
+  data_servico: dados.dataServico,
 
-    fotos_url: dados.fotosUrl || [],
+  validade: validade.toISOString().slice(0, 10),
 
-    peca_id: pecaId,
+  observacoes: dados.observacoes.trim(),
 
-    quantidade_peca: quantidadePeca,
+  fotos_url: dados.fotosUrl || [],
 
-    custo_peca: custoPeca,
+  peca_id: pecaId,
 
-    user_id: user.id,
+  quantidade_peca: quantidadePeca,
 
-  };
+  custo_peca: custoPeca,
+
+  empresa_id: dados.empresa_id,
+
+  user_id: user.id
+};
 
 
 

@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+
 import Cadastro from "./pages/Cadastro";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -11,21 +12,58 @@ import Estoque from "./pages/Estoque";
 import Configuracoes from "./pages/Configuracoes";
 import Consulta from "./pages/Consulta";
 import Comprovante from "./pages/Comprovante";
+import Empresa from "./pages/Empresa";
+
 import LayoutAdmin from "./components/LayoutAdmin";
 import { estaLogado } from "./services/auth";
 
+
 function RotaProtegida({ children }) {
-  return estaLogado() ? children : <Navigate to="/login" replace />;
+
+  return estaLogado()
+    ? children
+    : <Navigate to="/login" replace />;
+
 }
 
+
 function App() {
+
   return (
+
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/consulta" element={<Consulta />} />
-      <Route path="/comprovante/:codigo" element={<Comprovante />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/cadastro" element={<Cadastro />} />
+
+
+      <Route
+        path="/"
+        element={<Home />}
+      />
+
+
+      <Route
+        path="/consulta"
+        element={<Consulta />}
+      />
+
+
+      <Route
+        path="/comprovante/:codigo"
+        element={<Comprovante />}
+      />
+
+
+      <Route
+        path="/login"
+        element={<Login />}
+      />
+
+
+      <Route
+        path="/cadastro"
+        element={<Cadastro />}
+      />
+
+
       <Route
         path="/admin"
         element={
@@ -34,45 +72,70 @@ function App() {
           </RotaProtegida>
         }
       >
-        <Route index element={<Dashboard />} />
+
+
+        <Route
+          index
+          element={<Dashboard />}
+        />
+
 
         <Route
           path="nova-garantia"
           element={<NovaGarantia />}
         />
 
+
         <Route
           path="editar-garantia/:codigo"
           element={<EditarGarantia />}
         />
+
 
         <Route
           path="clientes"
           element={<Clientes />}
         />
 
+
         <Route
           path="estoque"
           element={<Estoque />}
         />
+
 
         <Route
           path="financeiro"
           element={<Financeiro />}
         />
 
+
         <Route
           path="configuracoes"
           element={<Configuracoes />}
         />
+
+
+        <Route
+          path="empresa"
+          element={<Empresa />}
+        />
+
+
       </Route>
+
 
       <Route
         path="*"
         element={<Navigate to="/" replace />}
       />
+
+
     </Routes>
+
   );
+
 }
+
 
 export default App;
