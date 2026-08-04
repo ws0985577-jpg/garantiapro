@@ -14,9 +14,12 @@ import Consulta from "./pages/Consulta";
 import Comprovante from "./pages/Comprovante";
 import Empresa from "./pages/Empresa";
 import OrdemServico from "./pages/OrdemServico";
+import OrdemLista from "./pages/OrdemLista";
+
 
 import LayoutAdmin from "./components/LayoutAdmin";
 import { estaLogado } from "./services/auth";
+
 
 
 function RotaProtegida({ children }) {
@@ -29,123 +32,159 @@ function RotaProtegida({ children }) {
 
 
 
+
 function App() {
 
-  return (
 
-    <Routes>
+return (
 
-
-      <Route
-        path="/"
-        element={<Home />}
-      />
-
-
-      <Route
-        path="/consulta"
-        element={<Consulta />}
-      />
-
-
-      <Route
-        path="/comprovante/:codigo"
-        element={<Comprovante />}
-      />
-
-
-      <Route
-        path="/login"
-        element={<Login />}
-      />
-
-
-      <Route
-        path="/cadastro"
-        element={<Cadastro />}
-      />
+<Routes>
 
 
 
-      <Route
-        path="/admin"
-        element={
-          <RotaProtegida>
-            <LayoutAdmin />
-          </RotaProtegida>
-        }
-      >
-
-
-        <Route
-          index
-          element={<Dashboard />}
-        />
-
-
-        <Route
-          path="nova-garantia"
-          element={<NovaGarantia />}
-        />
-
-
-        <Route
-          path="editar-garantia/:codigo"
-          element={<EditarGarantia />}
-        />
-
-
-        <Route
-          path="clientes"
-          element={<Clientes />}
-        />
-
-
-        <Route
-          path="estoque"
-          element={<Estoque />}
-        />
-
-
-        <Route
-          path="financeiro"
-          element={<Financeiro />}
-        />
-
-
-        <Route
-          path="configuracoes"
-          element={<Configuracoes />}
-        />
-
-
-        <Route
-          path="empresa"
-          element={<Empresa />}
-        />
-
-
-        <Route
-          path="ordem-servico"
-          element={<OrdemServico />}
-        />
-
-
-      </Route>
+<Route
+path="/"
+element={<Home />}
+/>
 
 
 
-      <Route
-        path="*"
-        element={<Navigate to="/" replace />}
-      />
+<Route
+path="/consulta"
+element={<Consulta />}
+/>
 
 
-    </Routes>
 
-  );
+<Route
+path="/comprovante/:codigo"
+element={<Comprovante />}
+/>
+
+
+
+<Route
+path="/login"
+element={<Login />}
+/>
+
+
+
+<Route
+path="/cadastro"
+element={<Cadastro />}
+/>
+
+
+
+
+
+<Route
+
+path="/admin"
+
+element={
+
+<RotaProtegida>
+
+<LayoutAdmin />
+
+</RotaProtegida>
 
 }
+
+>
+
+
+<Route
+index
+element={<Dashboard />}
+/>
+
+
+
+<Route
+path="nova-garantia"
+element={<NovaGarantia />}
+/>
+
+
+
+<Route
+path="editar-garantia/:codigo"
+element={<EditarGarantia />}
+/>
+
+
+
+<Route
+path="clientes"
+element={<Clientes />}
+/>
+
+
+
+<Route
+path="estoque"
+element={<Estoque />}
+/>
+
+
+
+<Route
+path="financeiro"
+element={<Financeiro />}
+/>
+
+
+
+<Route
+path="configuracoes"
+element={<Configuracoes />}
+/>
+
+
+
+<Route
+path="empresa"
+element={<Empresa />}
+/>
+
+
+
+<Route
+path="ordem-servico"
+element={<OrdemServico />}
+/>
+
+
+
+<Route
+path="ordens"
+element={<OrdemLista />}
+/>
+
+
+
+</Route>
+
+
+
+
+<Route
+path="*"
+element={<Navigate to="/" replace />}
+/>
+
+
+
+</Routes>
+
+);
+
+
+}
+
 
 
 export default App;

@@ -2038,3 +2038,33 @@ input:disabled {
   }
 
 }
+/* Ajuste Ordem de Serviço */
+
+.empresaCard textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  margin-bottom: 15px;
+}
+
+
+.empresaCard input,
+.empresaCard select,
+.empresaCard textarea {
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+
+.empresaCard label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+
+.empresaCard button {
+  margin-top: 15px;
+}
