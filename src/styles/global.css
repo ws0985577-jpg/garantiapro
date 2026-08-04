@@ -1962,3 +1962,79 @@ textarea:focus {
 input:disabled {
   background: #e2e8f0;
 }
+/* =========================
+   RESPONSIVO CELULAR
+========================= */
+
+@media (max-width: 768px) {
+
+  .adminLayout {
+    display: block;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: relative;
+    height: auto;
+  }
+
+  .sidebar nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+  }
+
+  .sidebar nav a {
+    white-space: nowrap;
+  }
+
+  .adminContent {
+    padding: 15px;
+  }
+
+
+  /* Formulários */
+  .formGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+
+  /* Cards dashboard */
+  .cards,
+  .dashboardCards {
+    grid-template-columns: 1fr !important;
+  }
+
+
+  /* Tabelas */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+
+  /* Botões */
+  button {
+    width: 100%;
+  }
+
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+
+  h1 {
+    font-size: 28px;
+  }
+
+
+  .card {
+    padding: 15px;
+  }
+
+}
