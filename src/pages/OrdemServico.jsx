@@ -1,39 +1,102 @@
 import { useState } from "react";
 import { Save, ClipboardList } from "lucide-react";
+import { criarOrdem } from "../services/ordens";
+
 
 export default function OrdemServico() {
 
+
   const [os, setOs] = useState({
-    cliente: "",
-    telefone: "",
-    aparelho: "",
-    imei: "",
-    senha: "",
-    defeito: "",
-    diagnostico: "",
-    servico: "",
-    pecas: "",
-    valor: "",
-    status: "Aguardando análise"
+
+    cliente:"",
+    telefone:"",
+    aparelho:"",
+    imei:"",
+    senha:"",
+    defeito:"",
+    diagnostico:"",
+    servico:"",
+    pecas:"",
+    valor:"",
+    status:"Aguardando análise"
+
   });
+
 
 
   function alterar(e){
 
     setOs({
+
       ...os,
       [e.target.name]: e.target.value
+
     });
 
   }
 
 
 
-  function salvar(){
+  async function salvar(){
 
-    console.log(os);
 
-    alert("Ordem de serviço criada!");
+    try{
+
+
+      const novaOs = {
+
+        ...os,
+
+        numero_os:
+        "OS-" + Date.now()
+
+      };
+
+
+      console.log("ANTES DO SUPABASE:", novaOs);
+
+
+
+      const resposta = await criarOrdem(novaOs);
+
+
+
+      console.log("DEPOIS DO SUPABASE:", resposta);
+
+
+
+      alert("Ordem de serviço criada com sucesso!");
+
+
+
+      setOs({
+
+        cliente:"",
+        telefone:"",
+        aparelho:"",
+        imei:"",
+        senha:"",
+        defeito:"",
+        diagnostico:"",
+        servico:"",
+        pecas:"",
+        valor:"",
+        status:"Aguardando análise"
+
+      });
+
+
+
+    }catch(error){
+
+
+      console.error("ERRO:", error);
+
+      alert(error.message);
+
+
+    }
+
 
   }
 
@@ -50,80 +113,53 @@ return (
 </h1>
 
 
+
 <div className="empresaCard">
 
 
 <div className="grid">
 
 
-<div>
-<label>Cliente</label>
-
-<input
+<input 
+placeholder="Cliente"
 name="cliente"
 value={os.cliente}
 onChange={alterar}
 />
 
-</div>
 
-
-
-<div>
-<label>Telefone</label>
-
-<input
+<input 
+placeholder="Telefone"
 name="telefone"
 value={os.telefone}
 onChange={alterar}
 />
 
-</div>
 
-
-
-<div>
-<label>Aparelho</label>
-
-<input
+<input 
+placeholder="Aparelho"
 name="aparelho"
 value={os.aparelho}
 onChange={alterar}
 />
 
-</div>
 
-
-
-<div>
-<label>IMEI</label>
-
-<input
+<input 
+placeholder="IMEI"
 name="imei"
 value={os.imei}
 onChange={alterar}
 />
 
-</div>
 
-
-
-<div>
-<label>Senha do aparelho</label>
-
-<input
+<input 
+placeholder="Senha do aparelho"
 name="senha"
 value={os.senha}
 onChange={alterar}
 />
 
-</div>
 
-
-
-<div>
-
-<label>Status</label>
 
 <select
 name="status"
@@ -131,36 +167,20 @@ value={os.status}
 onChange={alterar}
 >
 
-<option>
-Aguardando análise
-</option>
-
-<option>
-Em reparo
-</option>
-
-<option>
-Pronto
-</option>
-
-<option>
-Entregue
-</option>
-
+<option>Aguardando análise</option>
+<option>Em reparo</option>
+<option>Pronto</option>
+<option>Entregue</option>
 
 </select>
 
-</div>
-
 
 </div>
 
 
-
-<label>Defeito informado</label>
 
 <textarea
-className="mensagem"
+placeholder="Defeito informado"
 name="defeito"
 value={os.defeito}
 onChange={alterar}
@@ -168,10 +188,8 @@ onChange={alterar}
 
 
 
-<label>Diagnóstico técnico</label>
-
 <textarea
-className="mensagem"
+placeholder="Diagnóstico técnico"
 name="diagnostico"
 value={os.diagnostico}
 onChange={alterar}
@@ -179,10 +197,8 @@ onChange={alterar}
 
 
 
-<label>Serviço realizado</label>
-
 <textarea
-className="mensagem"
+placeholder="Serviço realizado"
 name="servico"
 value={os.servico}
 onChange={alterar}
@@ -190,10 +206,8 @@ onChange={alterar}
 
 
 
-<label>Peças utilizadas</label>
-
 <textarea
-className="mensagem"
+placeholder="Peças utilizadas"
 name="pecas"
 value={os.pecas}
 onChange={alterar}
@@ -201,9 +215,8 @@ onChange={alterar}
 
 
 
-<label>Valor total</label>
-
 <input
+placeholder="Valor total"
 name="valor"
 value={os.valor}
 onChange={alterar}
@@ -220,12 +233,13 @@ Criar Ordem de Serviço
 </button>
 
 
-
 </div>
 
 
 </div>
+
 
 )
+
 
 }
