@@ -13,6 +13,7 @@ import Configuracoes from "./pages/Configuracoes";
 import Consulta from "./pages/Consulta";
 import Comprovante from "./pages/Comprovante";
 import Empresa from "./pages/Empresa";
+import OrdemServico from "./pages/OrdemServico";
 
 import LayoutAdmin from "./components/LayoutAdmin";
 import { estaLogado } from "./services/auth";
@@ -25,6 +26,7 @@ function RotaProtegida({ children }) {
     : <Navigate to="/login" replace />;
 
 }
+
 
 
 function App() {
@@ -62,6 +64,7 @@ function App() {
         path="/cadastro"
         element={<Cadastro />}
       />
+
 
 
       <Route
@@ -122,7 +125,14 @@ function App() {
         />
 
 
+        <Route
+          path="ordem-servico"
+          element={<OrdemServico />}
+        />
+
+
       </Route>
+
 
 
       <Route

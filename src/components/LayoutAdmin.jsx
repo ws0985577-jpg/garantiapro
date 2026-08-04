@@ -7,6 +7,7 @@ import {
   Users,
   Wallet,
   Building2,
+  ClipboardList,
 } from "lucide-react";
 
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
@@ -37,6 +38,7 @@ function LayoutAdmin() {
 
         <div className="sidebarBrand">
 
+
           <span className="brandIcon">
 
             <ShieldCheck size={25} />
@@ -57,7 +59,6 @@ function LayoutAdmin() {
 
 
 
-
         <nav>
 
 
@@ -71,7 +72,6 @@ function LayoutAdmin() {
 
 
 
-
           <NavLink to="/admin/nova-garantia">
 
             <PlusCircle size={20} />
@@ -79,7 +79,6 @@ function LayoutAdmin() {
             Nova Garantia
 
           </NavLink>
-
 
 
 
@@ -93,7 +92,6 @@ function LayoutAdmin() {
 
 
 
-
           <NavLink to="/admin/estoque">
 
             <Package size={20} />
@@ -101,7 +99,6 @@ function LayoutAdmin() {
             Estoque
 
           </NavLink>
-
 
 
 
@@ -113,6 +110,15 @@ function LayoutAdmin() {
 
           </NavLink>
 
+
+
+          <NavLink to="/admin/ordem-servico">
+
+            <ClipboardList size={20} />
+
+            Ordem de Serviço
+
+          </NavLink>
 
 
 
@@ -127,7 +133,6 @@ function LayoutAdmin() {
 
 
         </nav>
-
 
 
 
@@ -147,7 +152,6 @@ function LayoutAdmin() {
 
 
       </aside>
-
 
 
 
