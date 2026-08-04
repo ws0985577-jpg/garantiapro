@@ -1931,3 +1931,34 @@ body.escuro input {
   color: white !important;
 
 }
+/* Campos de formulário mais visíveis */
+input,
+select,
+textarea {
+  background: #f8fafc;
+  border: 1px solid #94a3b8;
+  color: #0f172a;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+/* Texto dentro do campo */
+input::placeholder,
+textarea::placeholder {
+  color: #64748b;
+}
+
+/* Quando clicar para digitar */
+input:focus,
+select:focus,
+textarea:focus {
+  background: #ffffff;
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Campos desativados */
+input:disabled {
+  background: #e2e8f0;
+}
