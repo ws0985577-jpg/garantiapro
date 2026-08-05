@@ -3331,3 +3331,198 @@ padding:20px;
 
 
 }
+/* ============================= */
+/* DASHBOARD CELULAR */
+/* ============================= */
+
+@media(max-width:768px){
+
+
+.dashboardPage{
+
+  width:100%;
+  overflow-x:hidden;
+
+}
+
+
+
+/* CABEÇALHO */
+
+.pageHeader{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:25px;
+
+}
+
+
+.pageHeader h1{
+
+  font-size:42px;
+
+  line-height:1.1;
+
+}
+
+
+.pageHeader p{
+
+  font-size:18px;
+
+}
+
+
+
+/* BOTÃO NOVA GARANTIA */
+
+.pageHeader .btn{
+
+  width:100%;
+
+  justify-content:center;
+
+}
+
+
+
+/* CARDS DO DASHBOARD */
+
+.statsGrid,
+.statsGridFour{
+
+  display:grid !important;
+
+  grid-template-columns:1fr !important;
+
+  gap:20px !important;
+
+  width:100%;
+
+}
+
+
+
+.statsGrid article{
+
+  width:100% !important;
+
+  min-height:140px;
+
+  box-sizing:border-box;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:20px;
+
+}
+
+
+
+/* NUMEROS */
+
+.statsGrid article strong{
+
+  font-size:38px;
+
+}
+
+
+
+.statsGrid article small{
+
+  font-size:18px;
+
+}
+
+
+
+/* PAINEL */
+
+.panel{
+
+  width:100%;
+
+  overflow:hidden;
+
+}
+
+
+
+.panelHeader{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:20px;
+
+}
+
+
+
+.smallSearch{
+
+  width:100%;
+
+}
+
+
+.smallSearch input{
+
+  width:100%;
+
+}
+
+
+
+/* TABELA GARANTIAS */
+
+.panel table{
+
+  width:100%;
+
+}
+
+
+
+.panel tr{
+
+  display:block;
+
+  margin-bottom:15px;
+
+  padding:15px;
+
+  border-radius:15px;
+
+}
+
+
+
+.panel td{
+
+  display:block;
+
+  padding:10px 0;
+
+}
+
+
+
+.dashboardActions{
+
+  display:flex;
+
+  gap:10px;
+
+}
+
+
+
+}
