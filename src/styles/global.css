@@ -2958,3 +2958,91 @@ h1{
 }
 
 }
+/* ===== AJUSTE MOBILE FINAL ===== */
+
+@media(max-width:768px){
+
+  .adminContent{
+    width:100%;
+    padding:20px;
+    overflow-x:hidden;
+  }
+
+
+  /* TITULOS */
+  h1{
+    font-size:42px;
+    line-height:1.1;
+  }
+
+
+  /* CARDS RESUMO */
+  .resumoOS{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:15px;
+  }
+
+
+  /* TABELA DE OS MOBILE */
+  .empresaCard{
+    overflow-x:auto;
+  }
+
+
+  table{
+    min-width:700px;
+  }
+
+
+  /* FORMULARIOS */
+  .empresaCard form{
+    display:block;
+  }
+
+
+  .formGrid{
+    grid-template-columns:1fr !important;
+  }
+
+
+  .campo{
+    width:100%;
+  }
+
+
+  input,
+  select,
+  textarea{
+    width:100%;
+    font-size:18px;
+  }
+
+
+  /* MINHA ASSISTENCIA */
+  .empresaForm{
+    grid-template-columns:1fr !important;
+  }
+
+
+  .empresaForm > div{
+    width:100%;
+  }
+
+
+  /* MENU MOBILE */
+  .sidebar{
+    width:280px;
+    position:fixed;
+    left:0;
+    top:0;
+    height:100vh;
+    z-index:999;
+  }
+
+
+  .adminLayout{
+    display:block;
+  }
+
+}
