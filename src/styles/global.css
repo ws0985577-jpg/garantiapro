@@ -3019,3 +3019,124 @@ margin-top:10px;
 
 
 }
+/* ============================= */
+/* MENU MOBILE */
+/* ============================= */
+
+.menuMobile{
+  display:none;
+  position:fixed;
+  top:15px;
+  left:15px;
+  z-index:9999;
+  background:#2563eb;
+  color:white;
+  border:none;
+  width:45px;
+  height:45px;
+  border-radius:12px;
+  align-items:center;
+  justify-content:center;
+}
+
+
+
+/* ============================= */
+/* RESPONSIVO CELULAR */
+/* ============================= */
+
+@media(max-width:768px){
+
+
+.adminLayout{
+  display:block;
+}
+
+
+
+/* botão menu */
+
+.menuMobile{
+  display:flex;
+}
+
+
+
+
+/* sidebar escondida */
+
+.sidebar{
+
+  position:fixed;
+  top:0;
+  left:-280px;
+
+  width:260px;
+  height:100vh;
+
+  z-index:999;
+
+  transition:.3s;
+
+}
+
+
+/* quando abrir */
+
+.sidebar.ativo{
+
+  left:0;
+
+}
+
+
+
+
+.adminContent{
+
+  width:100%;
+  padding:20px;
+  padding-top:80px;
+
+}
+
+
+
+
+.sidebarBrand{
+
+  padding-top:60px;
+
+}
+
+
+
+/* tabelas */
+
+.empresaCard{
+
+  overflow-x:auto;
+
+}
+
+
+table{
+
+  min-width:700px;
+
+}
+
+
+
+/* títulos */
+
+h1{
+
+  font-size:32px;
+
+}
+
+
+
+
+}
