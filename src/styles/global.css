@@ -215,13 +215,61 @@ th { color: #69758a; font-size: 13px; }
 
 /* IMPRESSÃO / PDF */
 @media print {
-  body { background: #fff; }
-  .noPrint { display: none !important; }
-  .receiptPage { padding: 0; background: #fff; }
-  .receipt { max-width: none; padding: 20px; box-shadow: none; }
-  .receiptPhotosSection, .receiptPhotoItem { break-inside: avoid; }
-  .receiptPhotoItem:hover { transform: none; box-shadow: none; }
-  .receiptPhotoItem img { height: 190px; }
+
+body{
+background:white !important;
+}
+
+
+.sidebar,
+nav,
+header,
+.menu,
+.layoutMenu,
+.layoutSidebar{
+display:none !important;
+}
+
+
+.acoesOS,
+.btnImprimir,
+.btnWhatsapp{
+display:none !important;
+}
+
+
+#root{
+width:100%;
+}
+
+
+.empresaPage{
+padding:0 !important;
+margin:0 !important;
+}
+
+
+.empresaCard{
+box-shadow:none !important;
+border:none !important;
+width:100%;
+}
+
+
+.ordemTopo{
+display:none !important;
+}
+
+
+.cabecalhoOS h2{
+font-size:30px;
+}
+
+
+.blocoOS{
+break-inside:avoid;
+}
+
 }
 .receiptActionButtons {
   display: flex;
@@ -1047,7 +1095,7 @@ th { color: #69758a; font-size: 13px; }
 
 .stockSelectionInfo span {
   color: #566174;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .stockSelectionInfo small {
@@ -1061,7 +1109,7 @@ th { color: #69758a; font-size: 13px; }
 ========================= */
 
 .dashboardPage {
-  padding: 35px;
+  padding: 25px;
   background: #f4f7fb;
   min-height: 100vh;
 }
@@ -1359,7 +1407,7 @@ td {
 
 .panel {
   background: #ffffff !important;
-  padding: 25px;
+  padding: 15px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
@@ -2067,4 +2115,907 @@ input:disabled {
 
 .empresaCard button {
   margin-top: 15px;
+}
+/* ===== ORDEM DE SERVIÇO PROFISSIONAL ===== */
+
+
+.empresaCard h2 {
+  background: #f1f5f9;
+  padding: 12px 15px;
+  border-radius: 10px;
+  margin-top: 35px;
+  margin-bottom: 20px;
+  font-size: 21px;
+}
+
+
+
+.empresaCard .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+
+
+.empresaCard input,
+.empresaCard select,
+.empresaCard textarea {
+  width: 100%;
+  font-size: 16px;
+}
+
+
+
+input[name="estado_aparelho"] {
+  width: 100% !important;
+  margin-top: 18px;
+}
+
+
+
+.empresaCard textarea {
+  min-height: 140px;
+  margin-bottom: 18px;
+}
+
+
+
+.empresaCard button {
+  width: 250px;
+  height: 45px;
+  font-size: 16px;
+}
+/* BOTÕES DA LISTA DE ORDENS */
+
+.acoes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+
+.btnVer,
+.btnImprimir,
+.btnPronto,
+.btnExcluir {
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  color: white;
+
+}
+
+
+/* visualizar */
+
+.btnVer {
+  background: #2563eb;
+}
+
+
+/* imprimir */
+
+.btnImprimir {
+  background: #0ea5e9;
+}
+
+
+/* pronto */
+
+.btnPronto {
+  background: #16a34a;
+}
+
+
+/* excluir */
+
+.btnExcluir {
+  background: #ef4444;
+}
+
+
+.btnVer:hover,
+.btnImprimir:hover,
+.btnPronto:hover,
+.btnExcluir:hover {
+
+  transform: scale(1.08);
+  transition: 0.2s;
+
+}
+
+.btnVer,
+.btnExcluir {
+  width: 42px !important;
+  height: 42px;
+  padding: 0 !important;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.btnVer {
+  background: #2563eb !important;
+}
+
+
+.btnExcluir {
+  background: #ef4444 !important;
+}
+
+
+.btnVer svg,
+.btnExcluir svg {
+  width: 20px;
+  height: 20px;
+}
+.ordemTopo{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+
+.ordemTopo span{
+background:#2563eb;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+font-weight:bold;
+}
+
+
+.ordemCard{
+padding:20px;
+}
+
+
+.cabecalhoOS{
+text-align:center;
+border-bottom:1px solid #ddd;
+padding-bottom:10px;
+}
+
+
+.cabecalhoOS h2{
+font-size:24px;
+margin:0;
+}
+
+
+.statusOS{
+margin:20px 0;
+font-size:18px;
+}
+
+
+.statusOS span{
+padding:8px 15px;
+border-radius:20px;
+margin-left:10px;
+}
+
+
+.statusAnalise{
+background:#facc15;
+}
+
+
+.statusReparo{
+background:#60a5fa;
+}
+
+
+.statusPronto{
+background:#22c55e;
+color:white;
+}
+
+
+.blocoOS{
+background:#f8fafc;
+padding:10px 15px;
+border-radius:10px;
+margin-bottom:8px;
+}
+
+
+.blocoOS h2{
+margin-top:0;
+font-size:18px;
+margin-bottom:8px;
+}
+
+
+.valorFinal{
+font-size:22px;
+font-weight:bold;
+color:#16a34a;
+}
+
+
+.acoesOS{
+display:flex;
+gap:15px;
+}
+
+
+.btnImprimir {
+
+    background: #0ea5e9 !important;
+
+    width:42px !important;
+    height:42px !important;
+
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+
+    color:white !important;
+
+}
+
+
+.btnImprimir{
+background:#2563eb;
+}
+
+
+.btnWhatsapp{
+background:#16a34a;
+}
+.blocoOS p{
+  margin:5px 0;
+  font-size:14px;
+}
+@media print {
+
+body{
+  zoom: 1.05;
+}
+
+.empresaCard{
+  width: 95% !important;
+  margin:auto !important;
+}
+
+.blocoOS{
+  padding:10px !important;
+  margin-bottom:10px !important;
+}
+
+.blocoOS p{
+  font-size:12px !important;
+  line-height:1.3;
+}
+
+.cabecalhoOS h2{
+  font-size:24px !important;
+}
+
+.valorFinal{
+  font-size:14px !important;
+  font-weight:bold;
+}
+
+}
+.btnPronto{
+
+width:42px !important;
+height:42px;
+border-radius:8px;
+background:#16a34a !important;
+color:white;
+font-size:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+
+}
+/* RESUMO ORDENS */
+
+.resumoOS {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+
+.resumoOS div {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    min-width: 150px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+
+.resumoOS strong {
+    display: block;
+    font-size: 14px;
+    color: #555;
+}
+
+
+.resumoOS span {
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+    color: #1769ff;
+    margin-top: 10px;
+}
+
+
+
+/* CLIENTE */
+
+table td strong {
+
+    white-space: nowrap;
+
+}
+
+
+
+/* BOTÕES DA TABELA */
+
+.acoes button {
+
+    width: 45px !important;
+    height: 45px;
+    padding: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.btnImprimir {
+
+    background: #1769ff !important;
+
+}
+
+
+.acoes {
+
+    display:flex;
+    gap:8px;
+
+}
+/* TABELA ORDENS MELHORADA */
+
+.empresaCard table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+
+.empresaCard th,
+.empresaCard td {
+    padding: 14px 12px;
+    vertical-align: middle;
+}
+
+
+.empresaCard td:nth-child(2) {
+    width: 180px;
+}
+
+
+.empresaCard td:nth-child(2) strong {
+    white-space: normal;
+    line-height: 18px;
+}
+
+
+.empresaCard td:nth-child(3) {
+    width: 130px;
+}
+
+
+.empresaCard td:nth-child(8) {
+    width: 180px;
+}
+
+
+
+.acoes {
+    display:flex;
+    gap:8px;
+    justify-content:center;
+}
+
+
+.acoes button {
+    flex-shrink:0;
+    width:42px !important;
+    height:42px;
+}
+
+
+.acoes {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.acoes button {
+    width: 42px !important;
+    height: 42px;
+}
+
+
+.acoes {
+    display:flex;
+    gap:6px;
+    justify-content:center;
+}
+
+
+.acoes button {
+    width:40px !important;
+    height:40px;
+}
+.buscaOS{
+    margin-bottom:20px;
+}
+
+
+.buscaOS input{
+
+    width:100%;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    font-size:16px;
+
+}
+/* STATUS DA ORDEM DE SERVIÇO */
+
+.statusOS{
+
+padding:6px 12px;
+
+border-radius:20px;
+
+font-size:14px;
+
+font-weight:600;
+
+display:inline-block;
+
+}
+
+
+/* Aguardando análise */
+
+.statusAguardando{
+
+background:#fff3cd;
+
+color:#856404;
+
+}
+
+
+
+/* Em reparo */
+
+.statusReparo{
+
+background:#cfe2ff;
+
+color:#084298;
+
+}
+
+
+
+/* Pronto */
+
+.statusPronto{
+
+background:#d1e7dd;
+
+color:#0f5132;
+
+}
+
+
+
+/* Entregue */
+
+.statusEntregue{
+
+background:#e2e3e5;
+
+color:#41464b;
+
+}
+
+/* IMPRESSÃO ORDEM DE SERVIÇO */
+
+@media print {
+
+
+body * {
+
+visibility: hidden;
+
+}
+
+
+#impressaoOS,
+#impressaoOS * {
+
+visibility: visible;
+
+}
+
+
+
+#impressaoOS {
+
+position: absolute;
+
+left: 0;
+
+top: 0;
+
+width: 100%;
+
+padding: 25px;
+
+font-size: 14px;
+
+color: #000;
+
+}
+
+
+
+
+.ordemCard {
+
+box-shadow: none !important;
+
+border: none !important;
+
+}
+
+
+
+.cabecalhoOS {
+
+text-align: center;
+
+margin-bottom: 20px;
+
+}
+
+
+
+.cabecalhoOS h1 {
+
+font-size: 28px;
+
+margin: 0;
+
+}
+
+
+
+.cabecalhoOS p {
+
+margin: 4px;
+
+font-size: 13px;
+
+}
+
+
+
+.blocoOS {
+
+margin-top: 20px;
+
+border: 1px solid #ccc;
+
+padding: 15px;
+
+border-radius: 8px;
+
+}
+
+
+
+.blocoOS h2 {
+
+font-size: 16px;
+
+margin-bottom: 10px;
+
+}
+
+
+
+.termo {
+
+margin-top: 30px;
+
+}
+
+
+
+.acoesOS {
+
+display:none !important;
+
+}
+
+
+}
+/* BOTÕES DA ORDEM */
+
+.acoesOS{
+
+display:flex;
+
+gap:10px;
+
+margin:20px 0;
+
+}
+
+
+.btnVoltar,
+.btnImprimir,
+.btnWhatsapp{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:10px;
+
+font-size:15px;
+
+cursor:pointer;
+
+color:white;
+
+}
+
+
+
+.btnVoltar{
+
+background:#64748b;
+
+}
+
+
+
+.btnImprimir{
+
+background:#2563eb;
+
+}
+
+
+
+.btnWhatsapp{
+
+background:#16a34a;
+
+}
+
+
+
+
+
+/* STATUS */
+
+.statusPronto{
+
+background:#16a34a;
+
+color:white;
+
+padding:8px 18px;
+
+border-radius:20px;
+
+font-weight:bold;
+
+}
+
+
+.statusAguardando{
+
+background:#f59e0b;
+
+color:white;
+
+padding:8px 18px;
+
+border-radius:20px;
+
+font-weight:bold;
+
+}
+
+
+
+
+.valorFinal{
+
+font-size:22px;
+
+color:#16a34a;
+
+font-weight:bold;
+
+}
+/* BOTÃO IMPRIMIR ORDEM */
+
+.btnImprimir{
+
+width:45px;
+
+height:45px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:#2563eb;
+
+color:white;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+padding:0;
+
+}
+
+
+.btnImprimir svg{
+
+display:block;
+
+}
+/* AJUSTE IMPRESSÃO ORDEM DE SERVIÇO */
+
+@media print {
+
+
+body{
+
+zoom:80%;
+
+}
+
+
+
+.empresaPage{
+
+padding:0;
+
+margin:0;
+
+}
+
+
+
+.ordemTopo,
+.acoesOS,
+.sidebar,
+button{
+
+display:none !important;
+
+}
+
+
+
+#impressaoOS{
+
+width:100%;
+
+box-shadow:none;
+
+border:none;
+
+margin:0;
+
+padding:15px;
+
+}
+
+
+
+.cabecalhoOS h1{
+
+font-size:24px;
+
+}
+
+
+
+.cabecalhoOS h2{
+
+font-size:18px;
+
+}
+
+
+
+.blocoOS{
+
+padding:10px;
+
+margin-bottom:8px;
+
+}
+
+
+
+.blocoOS h2{
+
+font-size:16px;
+
+}
+
+
+
+.blocoOS p{
+
+font-size:12px;
+
+margin:3px 0;
+
+}
+
+
+
+.termo{
+
+margin-top:10px;
+
+}
+
+
+
 }

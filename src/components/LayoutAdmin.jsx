@@ -16,6 +16,7 @@ import { sair } from "../services/auth";
 
 function LayoutAdmin() {
 
+
   const navigate = useNavigate();
 
 
@@ -59,6 +60,7 @@ function LayoutAdmin() {
 
 
 
+
         <nav>
 
 
@@ -72,6 +74,7 @@ function LayoutAdmin() {
 
 
 
+
           <NavLink to="/admin/nova-garantia">
 
             <PlusCircle size={20} />
@@ -79,6 +82,7 @@ function LayoutAdmin() {
             Nova Garantia
 
           </NavLink>
+
 
 
 
@@ -92,6 +96,7 @@ function LayoutAdmin() {
 
 
 
+
           <NavLink to="/admin/estoque">
 
             <Package size={20} />
@@ -99,6 +104,7 @@ function LayoutAdmin() {
             Estoque
 
           </NavLink>
+
 
 
 
@@ -112,6 +118,7 @@ function LayoutAdmin() {
 
 
 
+
           <NavLink to="/admin/ordem-servico">
 
             <ClipboardList size={20} />
@@ -119,6 +126,18 @@ function LayoutAdmin() {
             Ordem de Serviço
 
           </NavLink>
+
+
+
+
+          <NavLink to="/admin/ordens">
+
+            <ClipboardList size={20} />
+
+            Ordens Criadas
+
+          </NavLink>
+
 
 
 
@@ -133,6 +152,7 @@ function LayoutAdmin() {
 
 
         </nav>
+
 
 
 
@@ -152,6 +172,7 @@ function LayoutAdmin() {
 
 
       </aside>
+
 
 
 

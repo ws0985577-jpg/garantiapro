@@ -6,99 +6,117 @@ import { criarOrdem } from "../services/ordens";
 export default function OrdemServico() {
 
 
-  const [os, setOs] = useState({
+const [os,setOs] = useState({
 
-    cliente:"",
-    telefone:"",
-    aparelho:"",
-    imei:"",
-    senha:"",
-    defeito:"",
-    diagnostico:"",
-    servico:"",
-    pecas:"",
-    valor:"",
-    status:"Aguardando análise"
+cliente:"",
+telefone:"",
+cpf:"",
+endereco:"",
 
-  });
+aparelho:"",
+imei:"",
+senha:"",
+cor:"",
+estado_aparelho:"",
 
+defeito:"",
+diagnostico:"",
+servico:"",
 
+pecas:"",
+valor_peca:"",
+mao_obra:"",
+valor:"",
 
-  function alterar(e){
+data_entrada:"",
+previsao_entrega:"",
+observacao:"",
 
-    setOs({
+status:"Aguardando análise"
 
-      ...os,
-      [e.target.name]: e.target.value
-
-    });
-
-  }
-
-
-
-  async function salvar(){
-
-
-    try{
-
-
-      const novaOs = {
-
-        ...os,
-
-        numero_os:
-        "OS-" + Date.now()
-
-      };
-
-
-      console.log("ANTES DO SUPABASE:", novaOs);
+});
 
 
 
-      const resposta = await criarOrdem(novaOs);
+function alterar(e){
+
+setOs({
+
+...os,
+[e.target.name]: e.target.value
+
+});
+
+}
 
 
 
-      console.log("DEPOIS DO SUPABASE:", resposta);
+async function salvar(){
+
+
+try{
+
+
+const novaOs = {
+
+...os,
+
+numero_os:
+"OS-" + Date.now()
+
+};
 
 
 
-      alert("Ordem de serviço criada com sucesso!");
+await criarOrdem(novaOs);
 
 
 
-      setOs({
-
-        cliente:"",
-        telefone:"",
-        aparelho:"",
-        imei:"",
-        senha:"",
-        defeito:"",
-        diagnostico:"",
-        servico:"",
-        pecas:"",
-        valor:"",
-        status:"Aguardando análise"
-
-      });
+alert("Ordem de serviço criada com sucesso!");
 
 
 
-    }catch(error){
+setOs({
+
+cliente:"",
+telefone:"",
+cpf:"",
+endereco:"",
+
+aparelho:"",
+imei:"",
+senha:"",
+cor:"",
+estado_aparelho:"",
+
+defeito:"",
+diagnostico:"",
+servico:"",
+
+pecas:"",
+valor_peca:"",
+mao_obra:"",
+valor:"",
+
+data_entrada:"",
+previsao_entrega:"",
+observacao:"",
+
+status:"Aguardando análise"
+
+});
 
 
-      console.error("ERRO:", error);
 
-      alert(error.message);
+}catch(error){
+
+alert(error.message);
+
+}
 
 
-    }
+}
 
-
-  }
 
 
 
@@ -117,45 +135,171 @@ return (
 <div className="empresaCard">
 
 
+
+<h2>👤 Dados do Cliente</h2>
+
+
 <div className="grid">
 
 
-<input 
-placeholder="Cliente"
-name="cliente"
-value={os.cliente}
+<input name="cliente" placeholder="Nome do cliente"
+value={os.cliente} onChange={alterar}/>
+
+
+<input name="telefone" placeholder="Telefone"
+value={os.telefone} onChange={alterar}/>
+
+
+<input name="cpf" placeholder="CPF"
+value={os.cpf} onChange={alterar}/>
+
+
+<input name="endereco" placeholder="Endereço"
+value={os.endereco} onChange={alterar}/>
+
+
+</div>
+
+
+
+
+<h2>📱 Dados do Aparelho</h2>
+
+
+<div className="grid">
+
+
+<input name="aparelho" placeholder="Aparelho"
+value={os.aparelho} onChange={alterar}/>
+
+
+<input name="imei" placeholder="IMEI"
+value={os.imei} onChange={alterar}/>
+
+
+<input name="senha" placeholder="Senha/Padrão"
+value={os.senha} onChange={alterar}/>
+
+
+<input name="cor" placeholder="Cor"
+value={os.cor} onChange={alterar}/>
+
+
+</div>
+
+
+
+<input
+name="estado_aparelho"
+placeholder="Estado do aparelho"
+value={os.estado_aparelho}
 onChange={alterar}
 />
 
 
-<input 
-placeholder="Telefone"
-name="telefone"
-value={os.telefone}
+
+
+
+<h2>🔧 Diagnóstico</h2>
+
+
+
+<textarea
+name="defeito"
+placeholder="Defeito informado"
+value={os.defeito}
 onChange={alterar}
 />
 
 
-<input 
-placeholder="Aparelho"
-name="aparelho"
-value={os.aparelho}
+
+<textarea
+name="diagnostico"
+placeholder="Diagnóstico técnico"
+value={os.diagnostico}
 onChange={alterar}
 />
 
 
-<input 
-placeholder="IMEI"
-name="imei"
-value={os.imei}
+
+<textarea
+name="servico"
+placeholder="Serviço realizado"
+value={os.servico}
 onChange={alterar}
 />
 
 
-<input 
-placeholder="Senha do aparelho"
-name="senha"
-value={os.senha}
+
+
+
+<h2>🧩 Peças e Valores</h2>
+
+
+
+<textarea
+name="pecas"
+placeholder="Peças utilizadas"
+value={os.pecas}
+onChange={alterar}
+/>
+
+
+
+<div className="grid">
+
+
+<input
+name="valor_peca"
+placeholder="Valor da peça"
+value={os.valor_peca}
+onChange={alterar}
+/>
+
+
+
+<input
+name="mao_obra"
+placeholder="Mão de obra"
+value={os.mao_obra}
+onChange={alterar}
+/>
+
+
+
+<input
+name="valor"
+placeholder="Valor total"
+value={os.valor}
+onChange={alterar}
+/>
+
+
+</div>
+
+
+
+
+
+<h2>📅 Controle da OS</h2>
+
+
+<div className="grid">
+
+
+<input
+type="date"
+name="data_entrada"
+value={os.data_entrada}
+onChange={alterar}
+/>
+
+
+
+<input
+type="date"
+name="previsao_entrega"
+value={os.previsao_entrega}
 onChange={alterar}
 />
 
@@ -167,10 +311,21 @@ value={os.status}
 onChange={alterar}
 >
 
-<option>Aguardando análise</option>
-<option>Em reparo</option>
-<option>Pronto</option>
-<option>Entregue</option>
+<option>
+Aguardando análise
+</option>
+
+<option>
+Em reparo
+</option>
+
+<option>
+Pronto
+</option>
+
+<option>
+Entregue
+</option>
 
 </select>
 
@@ -180,47 +335,12 @@ onChange={alterar}
 
 
 <textarea
-placeholder="Defeito informado"
-name="defeito"
-value={os.defeito}
+name="observacao"
+placeholder="Observações"
+value={os.observacao}
 onChange={alterar}
 />
 
-
-
-<textarea
-placeholder="Diagnóstico técnico"
-name="diagnostico"
-value={os.diagnostico}
-onChange={alterar}
-/>
-
-
-
-<textarea
-placeholder="Serviço realizado"
-name="servico"
-value={os.servico}
-onChange={alterar}
-/>
-
-
-
-<textarea
-placeholder="Peças utilizadas"
-name="pecas"
-value={os.pecas}
-onChange={alterar}
-/>
-
-
-
-<input
-placeholder="Valor total"
-name="valor"
-value={os.valor}
-onChange={alterar}
-/>
 
 
 
@@ -231,6 +351,7 @@ onChange={alterar}
 Criar Ordem de Serviço
 
 </button>
+
 
 
 </div>

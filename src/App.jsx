@@ -15,6 +15,7 @@ import Comprovante from "./pages/Comprovante";
 import Empresa from "./pages/Empresa";
 import OrdemServico from "./pages/OrdemServico";
 import OrdemLista from "./pages/OrdemLista";
+import DetalheOrdem from "./pages/DetalheOrdem";
 
 
 import LayoutAdmin from "./components/LayoutAdmin";
@@ -39,7 +40,6 @@ function App() {
 return (
 
 <Routes>
-
 
 
 <Route
@@ -166,6 +166,13 @@ element={<OrdemLista />}
 
 
 
+<Route
+path="ordem/:id"
+element={<DetalheOrdem />}
+/>
+
+
+
 </Route>
 
 
@@ -177,14 +184,12 @@ element={<Navigate to="/" replace />}
 />
 
 
-
 </Routes>
 
 );
 
 
 }
-
 
 
 export default App;
