@@ -3197,3 +3197,52 @@ select{
 
 
 }
+.empresaGrid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:20px;
+
+}
+
+
+
+@media(max-width:768px){
+
+
+.empresaGrid{
+
+grid-template-columns:1fr !important;
+
+gap:20px;
+
+}
+
+
+
+.empresaGrid > div{
+
+width:100%;
+
+}
+
+
+
+.empresaGrid input{
+
+width:100% !important;
+
+}
+
+
+
+.empresaCard{
+
+padding:20px;
+
+}
+
+
+}
