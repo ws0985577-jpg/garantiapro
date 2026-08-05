@@ -3526,3 +3526,170 @@ padding:20px;
 
 
 }
+/* ============================= */
+/* CORREÇÃO DASHBOARD MOBILE */
+/* ============================= */
+
+@media(max-width:768px){
+
+
+.dashboardPage{
+  width:100%;
+  overflow-x:hidden;
+}
+
+
+.pageHeader{
+  width:100%;
+}
+
+
+.pageHeader h1{
+  font-size:42px;
+  line-height:1.1;
+  word-break:break-word;
+}
+
+
+
+.pageHeader p{
+  font-size:20px;
+}
+
+
+
+.btnPrimary{
+  width:100%;
+  justify-content:center;
+  margin-top:20px;
+}
+
+
+
+/* CARDS DO DASHBOARD */
+
+.statsGrid,
+.statsGridFour{
+
+  display:grid !important;
+
+  grid-template-columns:1fr !important;
+
+  gap:20px;
+
+  width:100%;
+
+}
+
+
+
+.statsGrid article{
+
+  width:100%;
+
+  min-height:150px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:25px;
+
+  padding:25px;
+
+  box-sizing:border-box;
+
+}
+
+
+
+/* PAINEL */
+
+.panel{
+
+  width:100%;
+
+  overflow:hidden;
+
+}
+
+
+
+.panelHeader{
+
+  display:block;
+
+}
+
+
+
+.panelHeader h2{
+
+  font-size:32px;
+
+}
+
+
+
+.smallSearch{
+
+  width:100%;
+
+  margin-top:20px;
+
+}
+
+
+
+.smallSearch input{
+
+  width:100%;
+
+}
+
+
+
+
+
+/* TABELA GARANTIAS */
+
+.panel table{
+
+  width:100%;
+
+}
+
+
+
+.panel tr{
+
+  display:block;
+
+  width:100%;
+
+  margin-bottom:20px;
+
+}
+
+
+
+.panel td{
+
+  display:block;
+
+  width:100%;
+
+}
+
+
+
+.dashboardActions{
+
+  display:flex;
+
+  gap:10px;
+
+}
+
+
+}
