@@ -3246,3 +3246,88 @@ padding:20px;
 
 
 }
+/* ============================= */
+/* DASHBOARD MOBILE */
+/* ============================= */
+
+@media(max-width:768px){
+
+
+.dashboardCards,
+.cardsDashboard,
+.resumoDashboard{
+
+  display:grid !important;
+
+  grid-template-columns:1fr !important;
+
+  gap:20px;
+
+  width:100%;
+
+}
+
+
+
+.dashboardCard,
+.cardDashboard,
+.statCard{
+
+  width:100% !important;
+
+  max-width:100%;
+
+  box-sizing:border-box;
+
+}
+
+
+
+
+.dashboardCard h2,
+.cardDashboard h2{
+
+  font-size:28px;
+
+}
+
+
+
+
+.dashboardPage{
+
+  width:100%;
+
+  overflow:hidden;
+
+}
+
+
+
+.dashboardPage h1{
+
+  font-size:42px;
+
+  line-height:1.1;
+
+}
+
+
+
+.dashboardPage p{
+
+  font-size:20px;
+
+}
+
+
+
+.dashboardPage button{
+
+  width:100%;
+
+}
+
+
+
+}
