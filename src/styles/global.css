@@ -2827,40 +2827,68 @@ margin-top:10px;
   justify-content:center;
 }
 
+
 /* ============================= */
 /* RESPONSIVO CELULAR */
 /* ============================= */
 
 @media(max-width:768px){
 
+
+/* LAYOUT */
+
 .adminLayout{
   display:block;
 }
 
-/* botão menu */
 
-.menuMobile{
-  display:flex;
+.adminContent{
+
+  width:100%;
+  padding:20px;
+  padding-top:80px;
+  overflow-x:hidden;
+
 }
 
-/* sidebar escondida */
+
+/* BOTÃO MENU */
+
+.menuMobile{
+
+  display:flex;
+
+  position:fixed;
+
+  top:15px;
+  left:15px;
+
+  z-index:9999;
+
+}
+
+
+/* SIDEBAR */
 
 .sidebar{
 
   position:fixed;
-  top:0;
-  left:-280px;
 
-  width:260px;
+  top:0;
+  left:-100%;
+
+  width:280px;
+
   height:100vh;
 
-  z-index:999;
+  z-index:9998;
 
-  transition:.3s;
+  transition:.3s ease;
+
+  overflow-y:auto;
 
 }
 
-/* quando abrir */
 
 .sidebar.ativo{
 
@@ -2868,181 +2896,262 @@ margin-top:10px;
 
 }
 
-.adminContent{
 
-  width:100%;
-  padding:20px;
-  padding-top:80px;
 
-}
+/* MARCA */
 
 .sidebarBrand{
 
-  padding-top:60px;
+  padding:30px 20px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
 
 }
 
-/* tabelas */
 
-.empresaCard{
 
-  overflow-x:auto;
-
-}
-
-table{
-
-  min-width:700px;
-
-}
-
-/* títulos */
-
-h1{
-
-  font-size:32px;
-
-}
-
-}
-@media(max-width:768px){
+/* MENU */
 
 .sidebar nav{
+
   display:flex;
+
   flex-direction:column;
-  gap:10px;
-  width:100%;
+
+  gap:12px;
+
+  padding:15px;
+
 }
+
+
 
 .sidebar nav a{
 
-  width:90%;
-  margin:0 auto;
+  width:100%;
 
-  display:flex;
-  align-items:center;
-  gap:15px;
-
-  padding:15px 20px;
+  padding:15px;
 
   border-radius:12px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:15px;
 
   font-size:18px;
 
 }
 
-.sidebarBrand{
 
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:30px 20px 20px;
-
-}
-
-.sidebar{
-
-  overflow-y:auto;
-
-}
 
 .logoutButton{
 
   width:90%;
+
   margin:20px auto;
 
-  display:flex;
-  align-items:center;
+}
+
+
+
+/* TITULOS */
+
+h1{
+
+  font-size:38px;
+
+  line-height:1.1;
+
+}
+
+
+
+/* RESUMO */
+
+.resumoOS{
+
+  display:grid;
+
+  grid-template-columns:1fr;
+
   gap:15px;
 
 }
 
+
+
+/* ============================= */
+/* TABELA OS MOBILE */
+/* ============================= */
+
+
+.empresaCard{
+
+  width:100%;
+
+  overflow:hidden;
+
 }
-/* ===== AJUSTE MOBILE FINAL ===== */
-
-@media(max-width:768px){
-
-  .adminContent{
-    width:100%;
-    padding:20px;
-    overflow-x:hidden;
-  }
 
 
-  /* TITULOS */
-  h1{
-    font-size:42px;
-    line-height:1.1;
-  }
+
+table{
+
+  width:100%;
+
+  min-width:100%;
+
+  display:block;
+
+}
 
 
-  /* CARDS RESUMO */
-  .resumoOS{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:15px;
-  }
+
+thead{
+
+  display:none;
+
+}
 
 
-  /* TABELA DE OS MOBILE */
-  .empresaCard{
-    overflow-x:auto;
-  }
+
+tbody{
+
+  display:block;
+
+}
 
 
-  table{
-    min-width:700px;
-  }
+
+tr{
+
+  display:block;
+
+  background:white;
+
+  margin-bottom:15px;
+
+  border-radius:18px;
+
+  padding:15px;
+
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
 
 
-  /* FORMULARIOS */
-  .empresaCard form{
-    display:block;
-  }
+
+td{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:10px;
+
+  padding:10px;
+
+  font-size:16px;
+
+  border:none;
+
+  flex-wrap:wrap;
+
+}
 
 
-  .formGrid{
-    grid-template-columns:1fr !important;
-  }
+
+td::before{
+
+  font-weight:bold;
+
+  color:#64748b;
+
+}
 
 
-  .campo{
-    width:100%;
-  }
+
+td:nth-child(1)::before{
+  content:"Nº OS";
+}
 
 
-  input,
-  select,
-  textarea{
-    width:100%;
-    font-size:18px;
-  }
+td:nth-child(2)::before{
+  content:"Cliente";
+}
 
 
-  /* MINHA ASSISTENCIA */
-  .empresaForm{
-    grid-template-columns:1fr !important;
-  }
+td:nth-child(3)::before{
+  content:"Telefone";
+}
 
 
-  .empresaForm > div{
-    width:100%;
-  }
+td:nth-child(4)::before{
+  content:"Aparelho";
+}
 
 
-  /* MENU MOBILE */
-  .sidebar{
-    width:280px;
-    position:fixed;
-    left:0;
-    top:0;
-    height:100vh;
-    z-index:999;
-  }
+td:nth-child(5)::before{
+  content:"Data";
+}
 
 
-  .adminLayout{
-    display:block;
-  }
+td:nth-child(6)::before{
+  content:"Valor";
+}
+
+
+td:nth-child(7)::before{
+  content:"Status";
+}
+
+
+td:nth-child(8)::before{
+  content:"Ações";
+}
+
+
+
+/* ============================= */
+/* FORMULÁRIOS */
+/* ============================= */
+
+
+.formGrid{
+
+  display:grid;
+
+  grid-template-columns:1fr !important;
+
+}
+
+
+
+.empresaForm{
+
+  display:grid;
+
+  grid-template-columns:1fr !important;
+
+}
+
+
+
+input,
+textarea,
+select{
+
+  width:100%;
+
+  font-size:17px;
+
+}
+
 
 }
