@@ -10,6 +10,7 @@ import {
   ClipboardList,
   Menu,
   X,
+  CreditCard,
 } from "lucide-react";
 
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
@@ -243,6 +244,16 @@ function LayoutAdmin() {
         <Building2 size={20}/>
 
         Minha Assistência
+
+        </NavLink>
+
+
+
+        <NavLink onClick={fecharMenu} to="/admin/pagamento">
+
+        <CreditCard size={20}/>
+
+        Planos
 
         </NavLink>
 
