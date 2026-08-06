@@ -16,6 +16,7 @@ import Empresa from "./pages/Empresa";
 import OrdemServico from "./pages/OrdemServico";
 import OrdemLista from "./pages/OrdemLista";
 import DetalheOrdem from "./pages/DetalheOrdem";
+import Pagamento from "./pages/Pagamento";
 
 
 import LayoutAdmin from "./components/LayoutAdmin";
@@ -153,6 +154,13 @@ element={<Empresa />}
 
 
 <Route
+path="pagamento"
+element={<Pagamento />}
+/>
+
+
+
+<Route
 path="ordem-servico"
 element={<OrdemServico />}
 />
@@ -178,10 +186,12 @@ element={<DetalheOrdem />}
 
 
 
+
 <Route
 path="*"
 element={<Navigate to="/" replace />}
 />
+
 
 
 </Routes>
