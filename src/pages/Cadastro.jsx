@@ -1,22 +1,17 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../services/supabase";
-import { ShieldCheck } from "lucide-react";
 
-
-function Cadastro() {
-
+function Cadastro(){
 
 const navigate = useNavigate();
 
 
 const [dados,setDados] = useState({
-
 empresa:"",
 email:"",
 senha:"",
 confirmarSenha:"",
-
 });
 
 
@@ -27,11 +22,8 @@ const [erro,setErro] = useState("");
 function alterar(e){
 
 setDados({
-
 ...dados,
-
-[e.target.name]: e.target.value,
-
+[e.target.name]: e.target.value
 });
 
 }
@@ -47,47 +39,102 @@ setErro("");
 
 
 
-// confirmar senha
-
 if(dados.senha !== dados.confirmarSenha){
 
 setErro("As senhas não conferem.");
-
 return;
 
 }
 
 
 
-const {error} = await supabase.auth.signUp({
+
+// CRIA USUÁRIO
+
+const {data:userData,error:userError} = await supabase.auth.signUp({
 
 email:dados.email,
 
 password:dados.senha,
 
-
 options:{
 
-
 data:{
-
-
 empresa:dados.empresa
-
-
 }
 
-
 }
-
 
 });
 
 
 
-if(error){
 
-setErro(error.message);
+if(userError){
+
+setErro(userError.message);
+return;
+
+}
+
+
+
+
+const user = userData.user;
+
+
+
+
+if(user){
+
+
+// DATA FINAL DO TESTE 7 DIAS
+
+const dataFim = new Date();
+
+dataFim.setDate(
+dataFim.getDate()+7
+);
+
+
+
+
+// CRIA EMPRESA
+
+const {error:empresaError} = await supabase
+
+.from("empresas")
+
+.insert({
+
+nome:dados.empresa,
+
+email:dados.email,
+
+user_id:user.id,
+
+plano:"Teste Grátis",
+
+plano_ativo:"Teste",
+
+status:"ativo",
+
+data_inicio:new Date(),
+
+data_fim:dataFim
+
+});
+
+
+
+
+if(empresaError){
+
+console.log(empresaError);
+
+setErro(
+"Erro ao criar empresa"
+);
 
 return;
 
@@ -95,75 +142,39 @@ return;
 
 
 
+}
+
+
+
+
+
 alert(
-"Conta criada com sucesso!"
+"Conta criada! Você tem 7 dias grátis."
 );
 
 
 
 navigate("/login");
 
-
 }
+
 
 
 
 
 return (
 
-
-<main className="loginPage">
-
-
-<form
-
-className="loginCard"
-
-onSubmit={criarConta}
-
-autoComplete="off"
-
->
-
-
-
-<div className="loginLogo">
-
-<ShieldCheck size={38}/>
-
-</div>
-
-
+<div className="loginCard">
 
 
 <h1>
-
 Criar conta
-
 </h1>
 
 
-
-
 <p>
-
 Cadastre sua assistência no GarantiaPro
-
 </p>
-
-
-
-
-
-
-<div className="campo">
-
-
-<label>
-
-Empresa
-
-</label>
 
 
 
@@ -181,22 +192,6 @@ required
 
 />
 
-</div>
-
-
-
-
-
-
-
-<div className="campo">
-
-
-<label>
-
-Gmail
-
-</label>
 
 
 
@@ -216,22 +211,6 @@ required
 
 />
 
-</div>
-
-
-
-
-
-
-
-<div className="campo">
-
-
-<label>
-
-Senha
-
-</label>
 
 
 
@@ -251,23 +230,7 @@ required
 
 />
 
-</div>
 
-
-
-
-
-
-
-
-<div className="campo">
-
-
-<label>
-
-Confirmar senha
-
-</label>
 
 
 
@@ -287,26 +250,17 @@ required
 
 />
 
-</div>
 
 
 
+{
+erro &&
 
-
-
-
-{erro && (
-
-<div className="errorMessage">
-
+<p>
 {erro}
+</p>
 
-</div>
-
-)}
-
-
-
+}
 
 
 
@@ -317,15 +271,13 @@ className="btn btnPrimary loginButton"
 
 type="submit"
 
+onClick={criarConta}
+
 >
 
 Criar conta
 
 </button>
-
-
-
-
 
 
 
@@ -344,19 +296,12 @@ Já tenho conta
 
 
 
-
-</form>
-
-
-
-</main>
-
+</div>
 
 );
 
 
 }
-
 
 
 export default Cadastro;
