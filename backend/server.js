@@ -24,15 +24,17 @@ const client = new MercadoPagoConfig({
 
 
 
+
 // CRIAR PAGAMENTO
 
-app.post("/criar-pagamento", async (req,res)=>{
+app.post("/criar-pagamento", async(req,res)=>{
 
 
 try{
 
 
-const { plano } = req.body;
+const { plano, user_id } = req.body;
+
 
 
 let valor = 0;
@@ -41,7 +43,7 @@ let valor = 0;
 
 if(plano === "Mensal"){
 
-    valor = 25.90;
+valor = 25.90;
 
 }
 
@@ -49,7 +51,7 @@ if(plano === "Mensal"){
 
 if(plano === "Anual"){
 
-    valor = 99.90;
+valor = 99.90;
 
 }
 
@@ -74,8 +76,16 @@ const preference = new Preference(client);
 
 const pagamento = await preference.create({
 
-
 body:{
+
+
+metadata:{
+
+user_id:user_id,
+
+plano:plano
+
+},
 
 
 
@@ -97,35 +107,23 @@ unit_price:valor
 
 
 
-
-// LIBERA PIX, CARTÃO E BOLETO
-
 payment_methods:{
-
-
-excluded_payment_types:[],
-
 
 installments:12
 
-
 },
-
 
 
 
 back_urls:{
 
-
 success:"https://garantiapro.com.br/admin",
 
-failure:"https://garantiapro.com.br/admin/pagamento",
+failure:"https://garantiapro.com.br/admin",
 
-pending:"https://garantiapro.com.br/admin/pagamento"
-
+pending:"https://garantiapro.com.br/admin"
 
 },
-
 
 
 auto_return:"approved"
@@ -148,18 +146,15 @@ url:pagamento.init_point
 
 
 
-
-
 }catch(error){
 
 
-console.log("Erro Mercado Pago:",error);
-
+console.log(error);
 
 
 res.status(500).json({
 
-erro:"Erro ao criar pagamento"
+erro:"Erro criar pagamento"
 
 });
 
@@ -176,7 +171,8 @@ erro:"Erro ao criar pagamento"
 
 
 
-// WEBHOOK
+// WEBHOOK MERCADO PAGO
+
 
 app.post("/webhook", async(req,res)=>{
 
@@ -184,11 +180,14 @@ app.post("/webhook", async(req,res)=>{
 try{
 
 
-console.log("Webhook:",req.body);
+console.log("Webhook recebido:");
+
+console.log(req.body);
 
 
 
 if(req.body.type === "payment"){
+
 
 
 const idPagamento = req.body.data.id;
@@ -214,10 +213,103 @@ resultado.status
 
 
 
+
 if(resultado.status === "approved"){
 
 
-console.log("Pagamento aprovado!");
+
+const user_id = resultado.metadata.user_id;
+
+const plano = resultado.metadata.plano;
+
+
+
+console.log(
+"Ativando:",
+user_id,
+plano
+);
+
+
+
+
+
+const resposta = await fetch(
+
+`${process.env.SUPABASE_URL}/rest/v1/empresas?user_id=eq.${user_id}`,
+
+{
+
+
+method:"PATCH",
+
+
+headers:{
+
+
+"Content-Type":"application/json",
+
+
+apikey:process.env.SUPABASE_KEY,
+
+
+Authorization:
+`Bearer ${process.env.SUPABASE_KEY}`
+
+
+},
+
+
+body:JSON.stringify({
+
+
+plano:plano,
+
+
+plano_ativo:plano,
+
+
+status:"ativo",
+
+
+pagamento_id:idPagamento,
+
+
+data_inicio:new Date(),
+
+
+
+data_fim:
+
+plano === "Mensal"
+
+?
+
+new Date(
+Date.now()+30*24*60*60*1000
+)
+
+:
+
+new Date(
+Date.now()+365*24*60*60*1000
+)
+
+
+})
+
+
+}
+
+
+);
+
+
+
+console.log(
+"Supabase:",
+await resposta.text()
+);
 
 
 
@@ -236,14 +328,16 @@ res.sendStatus(200);
 }catch(error){
 
 
-console.log(error);
+console.log(
+"Erro webhook:",
+error
+);
 
 
 res.sendStatus(500);
 
 
 }
-
 
 
 });
@@ -258,11 +352,12 @@ res.sendStatus(500);
 app.get("/",(req,res)=>{
 
 
-res.send("GarantiaPro API Online");
+res.send(
+"GarantiaPro API Online"
+);
 
 
 });
-
 
 
 
@@ -277,7 +372,8 @@ app.listen(PORT,()=>{
 
 
 console.log(
-`Mercado Pago rodando na porta ${PORT}`
+"Servidor rodando na porta:",
+PORT
 );
 
 
