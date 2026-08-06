@@ -85,9 +85,12 @@ let liberar = false;
 
 
 
-// PLANO PAGO
+// PLANO PAGO OU TESTE
 
-if(data.status === "ativo"){
+if(
+data.status === "ativo" ||
+data.status === "teste"
+){
 
 liberar = true;
 
