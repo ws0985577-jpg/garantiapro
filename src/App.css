@@ -424,3 +424,590 @@ footer {
   }
 
 }
+@media print {
+
+  .noPrint {
+    display: none !important;
+  }
+
+
+  body {
+    background: white !important;
+  }
+
+
+  .receiptPage {
+    background: white !important;
+    padding: 0 !important;
+  }
+
+
+  .receipt {
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+
+
+  .receiptBrand {
+    display: flex !important;
+    align-items: center !important;
+    visibility: visible !important;
+  }
+
+
+  .receiptBrand img,
+  .receiptLogo {
+    display: block !important;
+    width: 90px !important;
+    height: 90px !important;
+    object-fit: contain !important;
+  }
+
+
+  .receiptBrand h1,
+  .receiptBrand p {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+
+  header {
+    display: flex !important;
+    visibility: visible !important;
+  }
+
+
+  header * {
+    visibility: visible !important;
+  }
+
+}
+/* ===== CADASTRO / LOGIN ===== */
+
+.loginPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+
+.loginCard {
+  width: 100%;
+  max-width: 430px;
+  background: white;
+  padding: 35px;
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+
+.loginLogo {
+  width: 60px;
+  height: 60px;
+  background: #146cff;
+  color: white;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+
+.loginCard h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #07111f;
+}
+
+
+.loginCard p {
+  color: #667085;
+  margin-bottom: 25px;
+}
+
+
+.loginCard label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+  font-weight: bold;
+  color: #172033;
+}
+
+
+.loginCard input {
+  width: 100%;
+  height: 48px;
+  padding: 0 15px;
+  border: 1px solid #d7deea;
+  border-radius: 10px;
+  outline: none;
+  font-size: 16px;
+  background: #f9fbff;
+  transition: 0.2s;
+}
+
+
+.loginCard input:focus {
+  border-color: #146cff;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(20,108,255,0.15);
+}
+
+
+.loginButton {
+  width: 100%;
+  height: 48px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+
+.backLink {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #146cff;
+  text-decoration: none;
+}
+.loginCard {
+  width: 420px !important;
+  padding: 35px !important;
+}
+
+
+.loginCard h1 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+
+.loginCard p {
+  margin-bottom: 20px;
+}
+
+
+.campo {
+  margin-bottom: 14px;
+}
+
+
+.campo label {
+  margin-bottom: 5px;
+  display: block;
+  font-weight: 600;
+}
+
+
+.campo input {
+  width: 100%;
+  height: 42px;
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+
+
+.loginButton {
+  height: 45px;
+  margin-top: 8px;
+}
+/* ===== EMPRESA - ACABAMENTO ===== */
+
+.empresaTitulo{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  background:#f1f5f9;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:25px;
+}
+
+.empresaTitulo svg{
+  color:#146cff;
+}
+
+.empresaTitulo h2{
+  margin:0;
+  color:#172033;
+}
+
+.empresaTitulo p{
+  margin-top:5px;
+  color:#64748b;
+}
+
+
+
+.empresaGrid{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+
+}
+
+
+
+.campoEmpresa{
+
+display:flex;
+flex-direction:column;
+gap:7px;
+
+}
+
+
+.campoEmpresa label,
+.logoBox label,
+.garantiaBox label{
+
+font-weight:600;
+color:#172033;
+
+display:flex;
+align-items:center;
+gap:6px;
+
+}
+
+
+
+.campoEmpresa input,
+.garantiaBox input,
+.mensagemBox textarea{
+
+width:100%;
+padding:14px;
+border-radius:10px;
+border:1px solid #d7dee9;
+font-size:15px;
+outline:none;
+
+}
+
+
+
+.campoEmpresa input:focus,
+.garantiaBox input:focus,
+.mensagemBox textarea:focus{
+
+border-color:#146cff;
+box-shadow:0 0 0 3px rgba(20,108,255,.15);
+
+}
+
+
+
+.logoBox{
+
+margin-top:25px;
+padding:20px;
+background:#f8fafc;
+border-radius:15px;
+
+}
+
+
+
+.logoPreview{
+
+display:block;
+margin-top:15px;
+width:150px;
+height:150px;
+object-fit:contain;
+border-radius:15px;
+background:white;
+padding:10px;
+border:1px solid #ddd;
+
+}
+
+
+
+
+.garantiaBox{
+
+margin-top:20px;
+
+}
+
+
+
+
+.mensagemBox{
+
+margin-top:20px;
+
+}
+
+
+.mensagemBox textarea{
+
+height:120px;
+resize:none;
+
+}
+
+
+
+.salvarEmpresa{
+
+margin-top:25px;
+
+background:#146cff;
+color:white;
+
+border:none;
+
+padding:14px 25px;
+
+border-radius:12px;
+
+font-size:16px;
+
+font-weight:bold;
+
+display:flex;
+align-items:center;
+gap:8px;
+
+cursor:pointer;
+
+}
+
+
+.salvarEmpresa:hover{
+
+background:#0756d5;
+
+}
+
+
+
+@media(max-width:800px){
+
+.empresaGrid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+/* BLOCO LOGO + GARANTIA */
+
+.logoBox {
+  background: #f6f8fc;
+  padding: 22px;
+  border-radius: 16px;
+  margin-top: 25px;
+  border: 1px solid #e5eaf1;
+}
+
+.logoBox label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #172033;
+}
+
+
+.logoBox input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border: 1px solid #d9e0eb;
+  border-radius: 10px;
+}
+
+
+.logoPreview {
+  margin-top: 18px;
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  background: white;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid #e5eaf1;
+}
+
+
+/* GARANTIA */
+
+.garantiaBox {
+  margin-top: 25px;
+  background: #f6f8fc;
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid #e5eaf1;
+}
+
+
+.garantiaBox label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+
+.garantiaBox input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #d9e0eb;
+  font-size: 15px;
+}
+
+
+.garantiaBox textarea {
+  width: 100%;
+  min-height: 130px;
+  margin-top: 15px;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #d9e0eb;
+  resize: vertical;
+}
+/* ===== ACABAMENTO MINHA ASSISTÊNCIA ===== */
+
+
+.empresaExtraGrid{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-top:25px;
+
+}
+
+
+
+.logoBox,
+.garantiaBox,
+.mensagemBox{
+
+background:#f7f9fc;
+border:1px solid #e5eaf1;
+border-radius:16px;
+padding:22px;
+
+}
+
+
+
+.logoBox label,
+.garantiaBox label,
+.mensagemBox label{
+
+font-weight:700;
+color:#172033;
+display:flex;
+align-items:center;
+gap:8px;
+margin-bottom:12px;
+
+}
+
+
+
+.logoPreview{
+
+margin-top:15px;
+width:140px;
+height:100px;
+object-fit:contain;
+border-radius:12px;
+background:white;
+padding:10px;
+border:1px solid #ddd;
+
+}
+
+
+
+.garantiaBox input{
+
+width:100%;
+padding:14px;
+border-radius:10px;
+border:1px solid #d9e0eb;
+font-size:15px;
+
+}
+
+
+
+.mensagemBox{
+
+margin-top:25px;
+
+}
+
+
+
+.mensagemBox textarea{
+
+width:100%;
+height:130px;
+padding:14px;
+border-radius:10px;
+border:1px solid #d9e0eb;
+resize:none;
+
+}
+
+
+
+.salvarEmpresa{
+
+margin-top:30px;
+width:100%;
+height:48px;
+border:none;
+border-radius:12px;
+background:#146cff;
+color:white;
+font-size:16px;
+font-weight:bold;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+cursor:pointer;
+
+}
+
+
+
+.salvarEmpresa:hover{
+
+background:#0756d5;
+
+}
+
+
+
+@media(max-width:800px){
+
+.empresaExtraGrid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+.logoEmpresaMenu{
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  object-fit:cover;
+  background:white;
+  padding:4px;
+}

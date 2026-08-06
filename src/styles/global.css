@@ -1,9 +1,3 @@
-/*
- GarantiaPro
- global.css organizado
- Regras preservadas com limpeza de formatação
-*/
-
 :root {
   font-family: Inter, Arial, Helvetica, sans-serif;
   color: #172033;
@@ -226,6 +220,7 @@ body{
 background:white !important;
 }
 
+
 .sidebar,
 nav,
 header,
@@ -235,20 +230,24 @@ header,
 display:none !important;
 }
 
+
 .acoesOS,
 .btnImprimir,
 .btnWhatsapp{
 display:none !important;
 }
 
+
 #root{
 width:100%;
 }
+
 
 .empresaPage{
 padding:0 !important;
 margin:0 !important;
 }
+
 
 .empresaCard{
 box-shadow:none !important;
@@ -256,13 +255,16 @@ border:none !important;
 width:100%;
 }
 
+
 .ordemTopo{
 display:none !important;
 }
 
+
 .cabecalhoOS h2{
 font-size:30px;
 }
+
 
 .blocoOS{
 break-inside:avoid;
@@ -1227,17 +1229,20 @@ break-inside:avoid;
   border:0;
 }
 
+
 /* botão visualizar */
 .dashboardActions a {
   background:#e8f1ff;
   color:#146cff;
 }
 
+
 /* botão WhatsApp */
 .dashboardActions .whatsappAction {
   background:#dcfce7;
   color:#16a34a;
 }
+
 
 /* botão excluir */
 .dashboardActions .deleteAction {
@@ -1298,6 +1303,7 @@ break-inside:avoid;
   color: #146cff;
 }
 
+
 .btnPrimary {
   background: #146cff !important;
   color: white !important;
@@ -1307,6 +1313,7 @@ break-inside:avoid;
 .btnPrimary:hover {
   background: #0756d5 !important;
 }
+
 
 table {
   background: white;
@@ -1324,25 +1331,30 @@ td {
   color: #344054;
 }
 
+
 .status.ativa {
   background: #e7f8ef;
   color: #168748;
 }
+
 
 .status.proxima {
   background: #fff4dc;
   color: #d98a00;
 }
 
+
 .status.vencida {
   background: #ffeaea;
   color: #d93025;
 }
 
+
 .smallSearch {
   background: white;
   border: 1px solid #e5e7eb;
 }
+
 
 .smallSearch input {
   color: #172033;
@@ -1390,6 +1402,7 @@ td {
   color: #172033;
 }
 
+
 /* TABELA */
 
 .panel {
@@ -1399,6 +1412,7 @@ td {
   box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
+
 .panel h2 {
   color: #07111f !important;
 }
@@ -1406,6 +1420,7 @@ td {
 .panel p {
   color: #69758a;
 }
+
 
 /* CARDS */
 
@@ -1415,6 +1430,7 @@ td {
   box-shadow: 0 8px 25px rgba(0,0,0,.08);
 }
 
+
 .statsGrid small {
   color:#69758a !important;
 }
@@ -1422,6 +1438,7 @@ td {
 .statsGrid strong {
   color:#07111f !important;
 }
+
 
 /* ICONES DOS CARDS */
 
@@ -1445,6 +1462,7 @@ td {
   color:#146cff !important;
 }
 
+
 /* BOTAO NOVA GARANTIA */
 
 .btnPrimary {
@@ -1452,12 +1470,14 @@ td {
   color:white !important;
 }
 
+
 /* BOTÕES DA TABELA */
 
 .dashboardActions {
   display:flex !important;
   gap:8px !important;
 }
+
 
 .dashboardActions a,
 .dashboardActions button {
@@ -1474,12 +1494,14 @@ td {
 
 }
 
+
 /* OLHO */
 
 .dashboardActions a {
   background:#eef4ff !important;
   color:#146cff !important;
 }
+
 
 /* WHATSAPP */
 
@@ -1490,6 +1512,7 @@ td {
 
 }
 
+
 /* EXCLUIR */
 
 .dashboardActions .deleteAction {
@@ -1498,6 +1521,7 @@ td {
   color:#dc2626 !important;
 
 }
+
 
 /* TEXTO DA TABELA */
 
@@ -1509,6 +1533,7 @@ table th {
   color:#07111f !important;
 }
 
+
 /* PESQUISA */
 
 .smallSearch {
@@ -1517,6 +1542,7 @@ table th {
  border:1px solid #e5e7eb !important;
 
 }
+
 
 .smallSearch input {
 
@@ -1531,11 +1557,13 @@ table th {
   border: none !important;
 }
 
+
 .dashboardActions .whatsappAction {
   background: #dcfce7 !important;
   color: #16a34a !important;
   border: none !important;
 }
+
 
 .dashboardActions .deleteAction {
   background: #ffe4e6 !important;
@@ -1543,15 +1571,18 @@ table th {
   border: none !important;
 }
 
+
 .dashboardActions a:hover {
   background: #146cff !important;
   color: white !important;
 }
 
+
 .dashboardActions .whatsappAction:hover {
   background: #16a34a !important;
   color: white !important;
 }
+
 
 .dashboardActions .deleteAction:hover {
   background: #dc2626 !important;
@@ -1583,6 +1614,7 @@ table th {
   gap:8px;
 }
 
+
 .viewAction,
 .whatsappAction,
 .deleteAction {
@@ -1595,15 +1627,18 @@ table th {
   border:none;
 }
 
+
 .viewAction {
   background:#e8f1ff;
   color:#146cff;
 }
 
+
 .whatsappAction {
   background:#dcfce7;
   color:#16a34a;
 }
+
 
 .deleteAction {
   background:#ffe4e6;
@@ -1643,15 +1678,18 @@ table th {
 
 }
 
+
 .themeButton:hover {
 
   opacity: 0.9;
 
 }
 
+
 /* =========================
    TEMA ESCURO
 ========================= */
+
 
 body.escuro {
 
@@ -1661,17 +1699,23 @@ body.escuro {
 
 }
 
+
+
 body.escuro .adminLayout {
 
   background: #0f172a;
 
 }
 
+
+
 body.escuro .adminContent {
 
   background: #0f172a;
 
 }
+
+
 
 body.escuro .panel,
 body.escuro .empresaCard,
@@ -1684,6 +1728,8 @@ body.escuro .features article {
 
 }
 
+
+
 body.escuro input,
 body.escuro textarea {
 
@@ -1695,6 +1741,8 @@ body.escuro textarea {
 
 }
 
+
+
 body.escuro label,
 body.escuro h1,
 body.escuro h2,
@@ -1704,17 +1752,23 @@ body.escuro h3 {
 
 }
 
+
+
 body.escuro .sidebar {
 
   background: #020617;
 
 }
 
+
+
 body.escuro .sidebar a {
 
   color: #cbd5e1;
 
 }
+
+
 
 body.escuro .sidebar a.active {
 
@@ -1723,6 +1777,8 @@ body.escuro .sidebar a.active {
   color:white;
 
 }
+
+
 
 /* =========================
    TRANSIÇÃO
@@ -1747,6 +1803,8 @@ body.claro {
 
 }
 
+
+
 body.escuro {
 
   --bg: #020617;
@@ -1757,6 +1815,8 @@ body.escuro {
 
 }
 
+
+
 /* Fundo geral */
 
 body {
@@ -1766,6 +1826,8 @@ body {
   color: var(--text);
 
 }
+
+
 
 /* Cards */
 
@@ -1778,6 +1840,8 @@ body.claro .features article {
 
 }
 
+
+
 body.escuro .empresaCard,
 body.escuro .panel,
 body.escuro .resultado,
@@ -1788,6 +1852,8 @@ body.escuro .features article {
   color: var(--text);
 
 }
+
+
 
 /* Textos */
 
@@ -1801,6 +1867,8 @@ body.escuro span {
   color: var(--text);
 
 }
+
+
 
 /* Inputs */
 
@@ -1816,6 +1884,8 @@ body.escuro select {
 
 }
 
+
+
 /* Tabela */
 
 body.escuro table {
@@ -1826,12 +1896,15 @@ body.escuro table {
 
 }
 
+
 body.escuro td,
 body.escuro th {
 
   border-color: #334155;
 
 }
+
+
 
 /* Transição */
 
@@ -1853,6 +1926,7 @@ body.escuro .adminLayout {
 
 }
 
+
 /* Área branca atrás dos conteúdos */
 
 body.escuro main,
@@ -1861,6 +1935,7 @@ body.escuro section {
   background: transparent;
 
 }
+
 
 /* Cards do dashboard */
 
@@ -1873,6 +1948,7 @@ body.escuro .card {
 
 }
 
+
 /* Textos que ficaram escuros */
 
 body.escuro .dashboardPage h1,
@@ -1884,6 +1960,7 @@ body.escuro .dashboardPage strong {
 
 }
 
+
 /* Caixa da lista de garantias */
 
 body.escuro .garantiasTable,
@@ -1892,6 +1969,7 @@ body.escuro .panel {
   background: #0f172a !important;
 
 }
+
 
 /* Busca */
 
@@ -1962,16 +2040,19 @@ input:disabled {
     padding: 15px;
   }
 
+
   /* Formulários */
   .formGrid {
     grid-template-columns: 1fr !important;
   }
+
 
   /* Cards dashboard */
   .cards,
   .dashboardCards {
     grid-template-columns: 1fr !important;
   }
+
 
   /* Tabelas */
   table {
@@ -1980,10 +2061,12 @@ input:disabled {
     white-space: nowrap;
   }
 
+
   /* Botões */
   button {
     width: 100%;
   }
+
 
   input,
   select,
@@ -1992,9 +2075,11 @@ input:disabled {
     font-size: 16px;
   }
 
+
   h1 {
     font-size: 28px;
   }
+
 
   .card {
     padding: 15px;
@@ -2010,6 +2095,7 @@ input:disabled {
   margin-bottom: 15px;
 }
 
+
 .empresaCard input,
 .empresaCard select,
 .empresaCard textarea {
@@ -2019,16 +2105,19 @@ input:disabled {
   border: 1px solid #cbd5e1;
 }
 
+
 .empresaCard label {
   display: block;
   margin-bottom: 6px;
   font-weight: 600;
 }
 
+
 .empresaCard button {
   margin-top: 15px;
 }
 /* ===== ORDEM DE SERVIÇO PROFISSIONAL ===== */
+
 
 .empresaCard h2 {
   background: #f1f5f9;
@@ -2039,11 +2128,15 @@ input:disabled {
   font-size: 21px;
 }
 
+
+
 .empresaCard .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
 }
+
+
 
 .empresaCard input,
 .empresaCard select,
@@ -2052,15 +2145,21 @@ input:disabled {
   font-size: 16px;
 }
 
+
+
 input[name="estado_aparelho"] {
   width: 100% !important;
   margin-top: 18px;
 }
 
+
+
 .empresaCard textarea {
   min-height: 140px;
   margin-bottom: 18px;
 }
+
+
 
 .empresaCard button {
   width: 250px;
@@ -2075,6 +2174,7 @@ input[name="estado_aparelho"] {
   justify-content: center;
   gap: 8px;
 }
+
 
 .btnVer,
 .btnImprimir,
@@ -2097,11 +2197,13 @@ input[name="estado_aparelho"] {
 
 }
 
+
 /* visualizar */
 
 .btnVer {
   background: #2563eb;
 }
+
 
 /* imprimir */
 
@@ -2109,17 +2211,20 @@ input[name="estado_aparelho"] {
   background: #0ea5e9;
 }
 
+
 /* pronto */
 
 .btnPronto {
   background: #16a34a;
 }
 
+
 /* excluir */
 
 .btnExcluir {
   background: #ef4444;
 }
+
 
 .btnVer:hover,
 .btnImprimir:hover,
@@ -2142,13 +2247,16 @@ input[name="estado_aparelho"] {
   justify-content: center;
 }
 
+
 .btnVer {
   background: #2563eb !important;
 }
 
+
 .btnExcluir {
   background: #ef4444 !important;
 }
+
 
 .btnVer svg,
 .btnExcluir svg {
@@ -2161,6 +2269,7 @@ justify-content:space-between;
 align-items:center;
 }
 
+
 .ordemTopo span{
 background:#2563eb;
 color:white;
@@ -2169,9 +2278,11 @@ border-radius:10px;
 font-weight:bold;
 }
 
+
 .ordemCard{
 padding:20px;
 }
+
 
 .cabecalhoOS{
 text-align:center;
@@ -2179,15 +2290,18 @@ border-bottom:1px solid #ddd;
 padding-bottom:10px;
 }
 
+
 .cabecalhoOS h2{
 font-size:24px;
 margin:0;
 }
 
+
 .statusOS{
 margin:20px 0;
 font-size:18px;
 }
+
 
 .statusOS span{
 padding:8px 15px;
@@ -2195,18 +2309,22 @@ border-radius:20px;
 margin-left:10px;
 }
 
+
 .statusAnalise{
 background:#facc15;
 }
+
 
 .statusReparo{
 background:#60a5fa;
 }
 
+
 .statusPronto{
 background:#22c55e;
 color:white;
 }
+
 
 .blocoOS{
 background:#f8fafc;
@@ -2215,11 +2333,13 @@ border-radius:10px;
 margin-bottom:8px;
 }
 
+
 .blocoOS h2{
 margin-top:0;
 font-size:18px;
 margin-bottom:8px;
 }
+
 
 .valorFinal{
 font-size:22px;
@@ -2227,10 +2347,12 @@ font-weight:bold;
 color:#16a34a;
 }
 
+
 .acoesOS{
 display:flex;
 gap:15px;
 }
+
 
 .btnImprimir {
 
@@ -2247,9 +2369,11 @@ gap:15px;
 
 }
 
+
 .btnImprimir{
 background:#2563eb;
 }
+
 
 .btnWhatsapp{
 background:#16a34a;
@@ -2310,6 +2434,7 @@ justify-content:center;
     margin-bottom: 25px;
 }
 
+
 .resumoOS div {
     background: white;
     padding: 20px;
@@ -2318,11 +2443,13 @@ justify-content:center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
+
 .resumoOS strong {
     display: block;
     font-size: 14px;
     color: #555;
 }
+
 
 .resumoOS span {
     display: block;
@@ -2332,6 +2459,8 @@ justify-content:center;
     margin-top: 10px;
 }
 
+
+
 /* CLIENTE */
 
 table td strong {
@@ -2339,6 +2468,8 @@ table td strong {
     white-space: nowrap;
 
 }
+
+
 
 /* BOTÕES DA TABELA */
 
@@ -2353,11 +2484,13 @@ table td strong {
 
 }
 
+
 .btnImprimir {
 
     background: #1769ff !important;
 
 }
+
 
 .acoes {
 
@@ -2373,28 +2506,35 @@ table td strong {
     border-spacing: 0 8px;
 }
 
+
 .empresaCard th,
 .empresaCard td {
     padding: 14px 12px;
     vertical-align: middle;
 }
 
+
 .empresaCard td:nth-child(2) {
     width: 180px;
 }
+
 
 .empresaCard td:nth-child(2) strong {
     white-space: normal;
     line-height: 18px;
 }
 
+
 .empresaCard td:nth-child(3) {
     width: 130px;
 }
 
+
 .empresaCard td:nth-child(8) {
     width: 180px;
 }
+
+
 
 .acoes {
     display:flex;
@@ -2402,11 +2542,13 @@ table td strong {
     justify-content:center;
 }
 
+
 .acoes button {
     flex-shrink:0;
     width:42px !important;
     height:42px;
 }
+
 
 .acoes {
     display: flex;
@@ -2415,16 +2557,19 @@ table td strong {
     align-items: center;
 }
 
+
 .acoes button {
     width: 42px !important;
     height: 42px;
 }
+
 
 .acoes {
     display:flex;
     gap:6px;
     justify-content:center;
 }
+
 
 .acoes button {
     width:40px !important;
@@ -2433,6 +2578,7 @@ table td strong {
 .buscaOS{
     margin-bottom:20px;
 }
+
 
 .buscaOS input{
 
@@ -2459,6 +2605,7 @@ display:inline-block;
 
 }
 
+
 /* Aguardando análise */
 
 .statusAguardando{
@@ -2468,6 +2615,8 @@ background:#fff3cd;
 color:#856404;
 
 }
+
+
 
 /* Em reparo */
 
@@ -2479,6 +2628,8 @@ color:#084298;
 
 }
 
+
+
 /* Pronto */
 
 .statusPronto{
@@ -2488,6 +2639,8 @@ background:#d1e7dd;
 color:#0f5132;
 
 }
+
+
 
 /* Entregue */
 
@@ -2503,11 +2656,13 @@ color:#41464b;
 
 @media print {
 
+
 body * {
 
 visibility: hidden;
 
 }
+
 
 #impressaoOS,
 #impressaoOS * {
@@ -2515,6 +2670,8 @@ visibility: hidden;
 visibility: visible;
 
 }
+
+
 
 #impressaoOS {
 
@@ -2534,6 +2691,9 @@ color: #000;
 
 }
 
+
+
+
 .ordemCard {
 
 box-shadow: none !important;
@@ -2541,6 +2701,8 @@ box-shadow: none !important;
 border: none !important;
 
 }
+
+
 
 .cabecalhoOS {
 
@@ -2550,6 +2712,8 @@ margin-bottom: 20px;
 
 }
 
+
+
 .cabecalhoOS h1 {
 
 font-size: 28px;
@@ -2558,6 +2722,8 @@ margin: 0;
 
 }
 
+
+
 .cabecalhoOS p {
 
 margin: 4px;
@@ -2565,6 +2731,8 @@ margin: 4px;
 font-size: 13px;
 
 }
+
+
 
 .blocoOS {
 
@@ -2578,6 +2746,8 @@ border-radius: 8px;
 
 }
 
+
+
 .blocoOS h2 {
 
 font-size: 16px;
@@ -2586,17 +2756,22 @@ margin-bottom: 10px;
 
 }
 
+
+
 .termo {
 
 margin-top: 30px;
 
 }
 
+
+
 .acoesOS {
 
 display:none !important;
 
 }
+
 
 }
 /* BOTÕES DA ORDEM */
@@ -2610,6 +2785,7 @@ gap:10px;
 margin:20px 0;
 
 }
+
 
 .btnVoltar,
 .btnImprimir,
@@ -2635,11 +2811,15 @@ color:white;
 
 }
 
+
+
 .btnVoltar{
 
 background:#64748b;
 
 }
+
+
 
 .btnImprimir{
 
@@ -2647,11 +2827,17 @@ background:#2563eb;
 
 }
 
+
+
 .btnWhatsapp{
 
 background:#16a34a;
 
 }
+
+
+
+
 
 /* STATUS */
 
@@ -2669,6 +2855,7 @@ font-weight:bold;
 
 }
 
+
 .statusAguardando{
 
 background:#f59e0b;
@@ -2682,6 +2869,9 @@ border-radius:20px;
 font-weight:bold;
 
 }
+
+
+
 
 .valorFinal{
 
@@ -2720,6 +2910,7 @@ padding:0;
 
 }
 
+
 .btnImprimir svg{
 
 display:block;
@@ -2729,11 +2920,14 @@ display:block;
 
 @media print {
 
+
 body{
 
 zoom:80%;
 
 }
+
+
 
 .empresaPage{
 
@@ -2743,6 +2937,8 @@ margin:0;
 
 }
 
+
+
 .ordemTopo,
 .acoesOS,
 .sidebar,
@@ -2751,6 +2947,8 @@ button{
 display:none !important;
 
 }
+
+
 
 #impressaoOS{
 
@@ -2766,17 +2964,23 @@ padding:15px;
 
 }
 
+
+
 .cabecalhoOS h1{
 
 font-size:24px;
 
 }
 
+
+
 .cabecalhoOS h2{
 
 font-size:18px;
 
 }
+
+
 
 .blocoOS{
 
@@ -2786,11 +2990,15 @@ margin-bottom:8px;
 
 }
 
+
+
 .blocoOS h2{
 
 font-size:16px;
 
 }
+
+
 
 .blocoOS p{
 
@@ -2800,12 +3008,16 @@ margin:3px 0;
 
 }
 
+
+
 .termo{
 
 margin-top:10px;
 
 }
 
+
+
 }
 /* ============================= */
 /* MENU MOBILE */
@@ -2825,41 +3037,6 @@ margin-top:10px;
   border-radius:12px;
   align-items:center;
   justify-content:center;
-}
-
-
-/* ============================= */
-/* MENU MOBILE */
-/* ============================= */
-
-.menuMobile{
-
-  display:none;
-
-  position:fixed;
-
-  top:15px;
-
-  left:15px;
-
-  z-index:9999;
-
-  background:#2563eb;
-
-  color:white;
-
-  border:none;
-
-  width:45px;
-
-  height:45px;
-
-  border-radius:12px;
-
-  align-items:center;
-
-  justify-content:center;
-
 }
 
 
@@ -2868,76 +3045,43 @@ margin-top:10px;
 /* RESPONSIVO CELULAR */
 /* ============================= */
 
-
 @media(max-width:768px){
 
 
-
-/* LAYOUT */
-
 .adminLayout{
-
   display:block;
-
 }
 
 
 
-.adminContent{
-
-  width:100%;
-
-  padding:20px;
-
-  padding-top:80px;
-
-  overflow-x:hidden;
-
-}
-
-
-
-/* MENU */
+/* botão menu */
 
 .menuMobile{
-
   display:flex;
-
-  position:fixed;
-
-  top:15px;
-
-  left:15px;
-
-  z-index:9999;
-
 }
 
 
 
-/* SIDEBAR */
+
+/* sidebar escondida */
 
 .sidebar{
 
   position:fixed;
-
   top:0;
+  left:-280px;
 
-  left:-100%;
-
-  width:280px;
-
+  width:260px;
   height:100vh;
 
-  z-index:9998;
+  z-index:999;
 
-  transition:.3s ease;
-
-  overflow-y:auto;
+  transition:.3s;
 
 }
 
 
+/* quando abrir */
 
 .sidebar.ativo{
 
@@ -2947,683 +3091,46 @@ margin-top:10px;
 
 
 
-.sidebarBrand{
 
-  padding:30px 20px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-
-}
-
-
-
-.sidebar nav{
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:12px;
-
-  padding:15px;
-
-}
-
-
-
-.sidebar nav a{
+.adminContent{
 
   width:100%;
-
-  padding:15px;
-
-  border-radius:12px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:15px;
-
-  font-size:18px;
-
-}
-
-
-
-.logoutButton{
-
-  width:90%;
-
-  margin:20px auto;
+  padding:20px;
+  padding-top:80px;
 
 }
 
 
 
 
+.sidebarBrand{
 
-/* TITULOS */
-
-h1{
-
-  font-size:34px;
-
-  line-height:1.1;
+  padding-top:60px;
 
 }
 
 
 
-
-
-/* CARDS RESUMO */
-
-.resumoOS{
-
-  display:grid;
-
-  grid-template-columns:1fr;
-
-  gap:15px;
-
-}
-
-
-
-
-
-/* ============================= */
-/* TABELA ORDEM SERVIÇO */
-/* ============================= */
-
+/* tabelas */
 
 .empresaCard{
 
-  width:100%;
-
-  overflow:hidden;
+  overflow-x:auto;
 
 }
-
 
 
 table{
 
-  width:100%;
-
-  min-width:100%;
-
-  display:block;
+  min-width:700px;
 
 }
 
 
 
-thead{
+/* títulos */
 
-  display:none;
-
-}
-
-
-
-tbody{
-
-  display:block;
-
-}
-
-
-
-tr{
-
-  display:block;
-
-  background:white;
-
-  margin-bottom:15px;
-
-  border-radius:18px;
-
-  padding:15px;
-
-}
-
-
-
-td{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  padding:10px;
-
-  font-size:15px;
-
-  flex-wrap:wrap;
-
-}
-
-
-
-
-
-/* ============================= */
-/* FORMULÁRIOS */
-/* ============================= */
-
-
-.formGrid,
-.empresaForm{
-
-  display:grid !important;
-
-  grid-template-columns:1fr !important;
-
-  gap:18px;
-
-}
-
-
-
-.formGrid > div,
-.empresaForm > div{
-
-  width:100%;
-
-}
-
-
-
-input,
-textarea,
-select{
-
-  width:100% !important;
-
-  box-sizing:border-box;
-
-  font-size:16px;
-
-  padding:14px;
-
-}
-
-
-
-
-
-/* ============================= */
-/* MINHA ASSISTÊNCIA */
-/* ============================= */
-
-
-.empresaPage{
-
-  width:100%;
-
-}
-
-
-
-.empresaPage .empresaCard{
-
-  width:100%;
-
-  padding:20px;
-
-}
-
-
-
-.empresaPage img{
-
-  max-width:100%;
-
-  height:auto;
-
-  border-radius:15px;
-
-}
-
-
-
-
-
-}
-.empresaGrid{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:20px;
-
-}
-
-
-
-@media(max-width:768px){
-
-
-.empresaGrid{
-
-grid-template-columns:1fr !important;
-
-gap:20px;
-
-}
-
-
-
-.empresaGrid > div{
-
-width:100%;
-
-}
-
-
-
-.empresaGrid input{
-
-width:100% !important;
-
-}
-
-
-
-.empresaCard{
-
-padding:20px;
-
-}
-
-
-}
-/* ============================= */
-/* DASHBOARD MOBILE */
-/* ============================= */
-
-@media(max-width:768px){
-
-
-.dashboardCards,
-.cardsDashboard,
-.resumoDashboard{
-
-  display:grid !important;
-
-  grid-template-columns:1fr !important;
-
-  gap:20px;
-
-  width:100%;
-
-}
-
-
-
-.dashboardCard,
-.cardDashboard,
-.statCard{
-
-  width:100% !important;
-
-  max-width:100%;
-
-  box-sizing:border-box;
-
-}
-
-
-
-
-.dashboardCard h2,
-.cardDashboard h2{
-
-  font-size:28px;
-
-}
-
-
-
-
-.dashboardPage{
-
-  width:100%;
-
-  overflow:hidden;
-
-}
-
-
-
-.dashboardPage h1{
-
-  font-size:42px;
-
-  line-height:1.1;
-
-}
-
-
-
-.dashboardPage p{
-
-  font-size:20px;
-
-}
-
-
-
-.dashboardPage button{
-
-  width:100%;
-
-}
-
-
-
-}
-/* ============================= */
-/* DASHBOARD CELULAR */
-/* ============================= */
-
-@media(max-width:768px){
-
-
-.dashboardPage{
-
-  width:100%;
-  overflow-x:hidden;
-
-}
-
-
-
-/* CABEÇALHO */
-
-.pageHeader{
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:25px;
-
-}
-
-
-.pageHeader h1{
-
-  font-size:42px;
-
-  line-height:1.1;
-
-}
-
-
-.pageHeader p{
-
-  font-size:18px;
-
-}
-
-
-
-/* BOTÃO NOVA GARANTIA */
-
-.pageHeader .btn{
-
-  width:100%;
-
-  justify-content:center;
-
-}
-
-
-
-/* CARDS DO DASHBOARD */
-
-.statsGrid,
-.statsGridFour{
-
-  display:grid !important;
-
-  grid-template-columns:1fr !important;
-
-  gap:20px !important;
-
-  width:100%;
-
-}
-
-
-
-.statsGrid article{
-
-  width:100% !important;
-
-  min-height:140px;
-
-  box-sizing:border-box;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:20px;
-
-}
-
-
-
-/* NUMEROS */
-
-.statsGrid article strong{
-
-  font-size:38px;
-
-}
-
-
-
-.statsGrid article small{
-
-  font-size:18px;
-
-}
-
-
-
-/* PAINEL */
-
-.panel{
-
-  width:100%;
-
-  overflow:hidden;
-
-}
-
-
-
-.panelHeader{
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:20px;
-
-}
-
-
-
-.smallSearch{
-
-  width:100%;
-
-}
-
-
-.smallSearch input{
-
-  width:100%;
-
-}
-
-
-
-/* TABELA GARANTIAS */
-
-.panel table{
-
-  width:100%;
-
-}
-
-
-
-.panel tr{
-
-  display:block;
-
-  margin-bottom:15px;
-
-  padding:15px;
-
-  border-radius:15px;
-
-}
-
-
-
-.panel td{
-
-  display:block;
-
-  padding:10px 0;
-
-}
-
-
-
-.dashboardActions{
-
-  display:flex;
-
-  gap:10px;
-
-}
-
-
-
-}
-/* ============================= */
-/* CORREÇÃO DASHBOARD MOBILE */
-/* ============================= */
-
-@media(max-width:768px){
-
-
-.dashboardPage{
-  width:100%;
-  overflow-x:hidden;
-}
-
-
-.pageHeader{
-  width:100%;
-}
-
-
-.pageHeader h1{
-  font-size:42px;
-  line-height:1.1;
-  word-break:break-word;
-}
-
-
-
-.pageHeader p{
-  font-size:20px;
-}
-
-
-
-.btnPrimary{
-  width:100%;
-  justify-content:center;
-  margin-top:20px;
-}
-
-
-
-/* CARDS DO DASHBOARD */
-
-.statsGrid,
-.statsGridFour{
-
-  display:grid !important;
-
-  grid-template-columns:1fr !important;
-
-  gap:20px;
-
-  width:100%;
-
-}
-
-
-
-.statsGrid article{
-
-  width:100%;
-
-  min-height:150px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:25px;
-
-  padding:25px;
-
-  box-sizing:border-box;
-
-}
-
-
-
-/* PAINEL */
-
-.panel{
-
-  width:100%;
-
-  overflow:hidden;
-
-}
-
-
-
-.panelHeader{
-
-  display:block;
-
-}
-
-
-
-.panelHeader h2{
+h1{
 
   font-size:32px;
 
@@ -3631,64 +3138,325 @@ padding:20px;
 
 
 
-.smallSearch{
 
+}
+@media(max-width:768px){
+
+.sidebar nav{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
   width:100%;
-
-  margin-top:20px;
-
 }
 
 
+.sidebar nav a{
 
-.smallSearch input{
-
-  width:100%;
-
-}
-
-
-
-
-
-/* TABELA GARANTIAS */
-
-.panel table{
-
-  width:100%;
-
-}
-
-
-
-.panel tr{
-
-  display:block;
-
-  width:100%;
-
-  margin-bottom:20px;
-
-}
-
-
-
-.panel td{
-
-  display:block;
-
-  width:100%;
-
-}
-
-
-
-.dashboardActions{
+  width:90%;
+  margin:0 auto;
 
   display:flex;
+  align-items:center;
+  gap:15px;
 
-  gap:10px;
+  padding:15px 20px;
 
+  border-radius:12px;
+
+  font-size:18px;
+
+}
+
+
+.sidebarBrand{
+
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:30px 20px 20px;
+
+}
+
+
+.sidebar{
+
+  overflow-y:auto;
+
+}
+
+
+.logoutButton{
+
+  width:90%;
+  margin:20px auto;
+
+  display:flex;
+  align-items:center;
+  gap:15px;
+
+}
+
+
+}
+/* ===========================
+   MODO DESKTOP NO CELULAR
+   =========================== */
+
+@media(max-width:768px){
+
+  body{
+    min-width:1200px;
+  }
+
+  #root{
+    min-width:1200px;
+  }
+
+  .adminLayout{
+    display:grid !important;
+    grid-template-columns:260px 1fr !important;
+  }
+
+  .sidebar{
+    position:relative !important;
+    left:0 !important;
+    width:260px !important;
+    height:auto !important;
+  }
+
+  .adminContent{
+    padding:30px !important;
+  }
+
+  .menuMobile{
+    display:none !important;
+  }
+
+  .statsGrid{
+    grid-template-columns:repeat(4,1fr) !important;
+  }
+
+  .formGrid,
+  .empresaGrid{
+    grid-template-columns:repeat(2,1fr) !important;
+  }
+
+}
+.cabecalhoOS{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:20px;
+
+border-bottom:2px solid #222;
+
+}
+
+
+.empresaInfo{
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
+}
+
+
+.logoOS{
+
+width:100px;
+
+height:100px;
+
+object-fit:contain;
+
+}
+
+
+
+.empresaInfo h1{
+
+font-size:26px;
+
+margin:0;
+
+text-transform:uppercase;
+
+}
+
+
+
+.empresaInfo p{
+
+margin:4px 0;
+
+font-size:13px;
+
+}
+
+
+
+.tituloOS{
+
+text-align:right;
+
+}
+
+
+
+.tituloOS h2{
+
+font-size:20px;
+
+margin-bottom:15px;
+
+}
+
+
+
+.tituloOS strong{
+
+font-size:16px;
+
+}
+.cabecalhoOS{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:25px 20px;
+
+text-align:center;
+
+}
+
+
+
+.logoOS{
+
+width:90px;
+
+height:90px;
+
+object-fit:contain;
+
+}
+
+
+
+.cabEsquerda{
+
+width:25%;
+
+}
+
+
+
+.cabCentro{
+
+width:45%;
+
+}
+
+
+
+.cabCentro h1{
+
+font-size:32px;
+
+margin:0;
+
+}
+
+
+
+.cabCentro p{
+
+margin:4px 0;
+
+font-size:14px;
+
+}
+
+
+
+.cabDireita{
+
+width:30%;
+
+}
+
+
+
+.cabDireita h2{
+
+font-size:20px;
+
+background:#f1f5f9;
+
+padding:10px;
+
+border-radius:8px;
+
+}
+
+
+
+.cabDireita p{
+
+margin:5px;
+
+}
+
+
+
+.cabDireita strong{
+
+font-size:16px;
+
+}
+
+
+
+.cabecalhoOS + hr{
+
+border:1px solid #222;
+
+margin-top:15px;
+
+}
+@media print {
+
+body {
+    background: white !important;
+}
+
+.noPrint {
+    display:none !important;
+}
+
+
+.receiptPage {
+    display:block !important;
+    visibility:visible !important;
+}
+
+
+.receipt {
+    display:block !important;
+    visibility:visible !important;
+}
+
+
+.receipt * {
+    visibility:visible !important;
 }
 
 

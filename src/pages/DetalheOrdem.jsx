@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { buscarOrdem } from "../services/ordens";
+import { supabase } from "../services/supabase";
 import { Printer, MessageCircle, ArrowLeft } from "lucide-react";
 
 
 export default function DetalheOrdem(){
 
 const { id } = useParams();
-
 const navigate = useNavigate();
 
 const [os,setOs] = useState(null);
+const [empresa,setEmpresa] = useState(null);
 
 
 
@@ -24,11 +25,46 @@ setOs(dados);
 
 
 
+async function carregarEmpresa(){
+
+const {
+data:{user}
+}= await supabase.auth.getUser();
+
+
+if(!user) return;
+
+
+
+const {data,error}= await supabase
+
+.from("empresas")
+
+.select("*")
+
+.eq("user_id",user.id)
+
+.single();
+
+
+
+if(!error){
+
+setEmpresa(data);
+
+}
+
+}
+
+
+
 useEffect(()=>{
 
 carregar();
+carregarEmpresa();
 
 },[]);
+
 
 
 
@@ -56,7 +92,7 @@ function enviarWhatsApp(){
 
 const mensagem = `
 
-Olá ${os.cliente}, aqui é da W-Tech Assistência Técnica.
+Olá ${os.cliente}, aqui é da ${empresa?.nome || "Assistência Técnica"}.
 
 Sua Ordem de Serviço:
 
@@ -103,39 +139,27 @@ return (
 
 <div className="ordemTopo">
 
-
 <div>
 
 <h1>
 📋 Ordem de Serviço
 </h1>
 
-
 <p>
 Número: <strong>{os.numero_os}</strong>
 </p>
 
-
 </div>
 
 
-
-<span className={
-os.status === "Pronto"
-?
-"statusPronto"
-:
-"statusAguardando"
-}>
+<span className="statusOS">
 
 {os.status}
 
 </span>
 
 
-
 </div>
-
 
 
 
@@ -145,13 +169,9 @@ os.status === "Pronto"
 <div className="acoesOS">
 
 
-
 <button
-
 className="btnVoltar"
-
 onClick={()=>navigate("/admin/ordens")}
-
 >
 
 <ArrowLeft size={20}/>
@@ -160,43 +180,25 @@ onClick={()=>navigate("/admin/ordens")}
 
 
 
-
-
-
 <button
-
 className="btnImprimir"
-
-title="Imprimir"
-
 onClick={()=>window.print()}
-
 >
 
-<Printer size={22} strokeWidth={3}/>
+<Printer size={22}/>
 
 </button>
 
 
 
-
-
-
-
 <button
-
 className="btnWhatsapp"
-
-title="WhatsApp"
-
 onClick={enviarWhatsApp}
-
 >
 
 <MessageCircle size={22}/>
 
 </button>
-
 
 
 </div>
@@ -207,25 +209,50 @@ onClick={enviarWhatsApp}
 
 
 
-
-
 <div 
-
 className="empresaCard ordemCard"
-
 id="impressaoOS"
-
 >
 
 
 
 
 
+
+{/* CABEÇALHO */}
+
 <div className="cabecalhoOS">
 
 
+
+<div className="cabEsquerda">
+
+
+<img
+
+src={empresa?.logo}
+
+className="logoOS"
+
+alt="Logo"
+
+/>
+
+
+</div>
+
+
+
+
+
+
+<div className="cabCentro">
+
+
 <h1>
-W-TECH
+
+{empresa?.nome || "Assistência Técnica"}
+
 </h1>
 
 
@@ -235,24 +262,57 @@ Assistência Técnica
 
 
 <p>
-📞 27996368835
+📞 {empresa?.telefone || "-"}
 </p>
 
 
 <p>
-📍 Endereço da assistência
+📍 {empresa?.endereco || "-"}
 </p>
+
+
+</div>
+
+
+
+
+
+
+
+<div className="cabDireita">
+
+
+<h2>
+
+ORDEM DE SERVIÇO
+
+</h2>
+
+
+<p>
+Nº OS:
+</p>
+
+
+<strong>
+
+{os.numero_os}
+
+</strong>
+
+
+</div>
+
+
+
+</div>
+
+
+
 
 
 <hr/>
 
-
-<h2>
-ORDEM DE SERVIÇO
-</h2>
-
-
-</div>
 
 
 
@@ -332,6 +392,7 @@ TOTAL: R$ {os.valor || "0,00"}
 
 </h2>
 
+
 </div>
 
 
@@ -371,12 +432,11 @@ TOTAL: R$ {os.valor || "0,00"}
 
 <div className="blocoOS termo">
 
-
 <h2>📜 Termo de Garantia</h2>
 
 
 <p>
-A garantia cobre somente o serviço realizado pela W-Tech.
+A garantia cobre somente o serviço realizado pela {empresa?.nome || "assistência"}.
 </p>
 
 
@@ -390,8 +450,8 @@ O cliente declara estar ciente das condições do serviço.
 </p>
 
 
-
 <br/>
+
 
 <p>
 Assinatura do cliente:
@@ -400,19 +460,22 @@ Assinatura do cliente:
 
 <br/>
 
+
 _____________________________
 
-</div>
-
-
-
-
-
 
 </div>
 
 
+
+
+
+
 </div>
+
+
+</div>
+
 
 )
 

@@ -21,6 +21,8 @@ try{
 
 const dados = await buscarOrdens();
 
+console.log("ORDENS RECEBIDAS:", dados);
+
 setOrdens(dados || []);
 
 }catch(error){

@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../services/supabase";
-import { Save } from "lucide-react";
+import { 
+  Save, 
+  Building2, 
+  MapPin, 
+  Image, 
+  ShieldCheck 
+} from "lucide-react";
 
 
 export default function Empresa() {
@@ -32,7 +38,6 @@ useEffect(()=>{
 carregarEmpresa();
 
 },[]);
-
 
 
 
@@ -71,8 +76,6 @@ setEmpresa(data);
 
 
 
-
-
 function alterar(e){
 
 
@@ -91,7 +94,6 @@ setEmpresa({
 
 
 
-
 async function enviarLogo(){
 
 
@@ -101,27 +103,25 @@ return empresa.logo;
 
 
 
-const extensao =
-arquivoLogo.name.split(".").pop();
+const extensao = arquivoLogo.name.split(".").pop();
+
+
+const nomeArquivo = `${Date.now()}.${extensao}`;
 
 
 
-const nomeArquivo =
-`${Date.now()}.${extensao}`;
-
-
-
-
-
-const {error} =
-await supabase.storage
+const {error}= await supabase.storage
 
 .from("logos")
 
 .upload(nomeArquivo,arquivoLogo,{
+
 cacheControl:"3600",
+
 upsert:false,
+
 contentType:arquivoLogo.type
+
 });
 
 
@@ -130,8 +130,7 @@ if(error) throw error;
 
 
 
-const {data} =
-supabase.storage
+const {data}=supabase.storage
 
 .from("logos")
 
@@ -148,18 +147,13 @@ return data.publicUrl;
 
 
 
-
-
-
 async function salvar(){
 
 
 try{
 
 
-const {data:{user}} =
-await supabase.auth.getUser();
-
+const {data:{user}} = await supabase.auth.getUser();
 
 
 let logo = empresa.logo;
@@ -175,9 +169,7 @@ logo = await enviarLogo();
 
 
 
-
-const {error} =
-await supabase
+const {error}= await supabase
 
 .from("empresas")
 
@@ -195,9 +187,7 @@ user_id:user.id
 
 
 
-if(error)
-
-throw error;
+if(error) throw error;
 
 
 
@@ -214,9 +204,7 @@ alert(error.message);
 }
 
 
-
 }
-
 
 
 
@@ -235,13 +223,32 @@ return (
 
 
 
+<div className="empresaTitulo">
+
+
+<Building2 size={25}/>
+
+
+<div>
+
+<h2>Dados da Assistência</h2>
+
+<p>Informações da sua empresa</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
 <div className="empresaGrid">
 
 
 
-
-
-<div>
+<div className="campoEmpresa">
 
 <label>Nome da Assistência</label>
 
@@ -261,7 +268,7 @@ onChange={alterar}
 
 
 
-<div>
+<div className="campoEmpresa">
 
 <label>Telefone</label>
 
@@ -281,7 +288,8 @@ onChange={alterar}
 
 
 
-<div>
+
+<div className="campoEmpresa">
 
 <label>Email</label>
 
@@ -301,7 +309,8 @@ onChange={alterar}
 
 
 
-<div>
+
+<div className="campoEmpresa">
 
 <label>Responsável</label>
 
@@ -321,9 +330,17 @@ onChange={alterar}
 
 
 
-<div>
 
-<label>Endereço</label>
+<div className="campoEmpresa">
+
+<label>
+
+<MapPin size={16}/>
+
+ Endereço
+
+</label>
+
 
 <input
 
@@ -335,13 +352,16 @@ onChange={alterar}
 
 />
 
+
 </div>
 
 
 
 
 
-<div>
+
+
+<div className="campoEmpresa">
 
 <label>Cidade</label>
 
@@ -361,7 +381,8 @@ onChange={alterar}
 
 
 
-<div>
+
+<div className="campoEmpresa">
 
 <label>Estado</label>
 
@@ -381,7 +402,9 @@ onChange={alterar}
 
 
 
-<div>
+
+
+<div className="campoEmpresa">
 
 <label>Instagram</label>
 
@@ -399,12 +422,31 @@ onChange={alterar}
 
 
 
+</div>
 
 
 
-<div>
 
-<label>Logo da Assistência</label>
+
+
+
+<div className="empresaExtraGrid">
+
+
+
+
+
+<div className="logoBox">
+
+
+<label>
+
+<Image size={18}/>
+
+ Logo da Assistência
+
+</label>
+
 
 
 <input
@@ -419,25 +461,19 @@ onChange={(e)=>setArquivoLogo(e.target.files[0])}
 
 
 
+
 {empresa.logo && (
 
 <img
 
 src={empresa.logo}
 
-width="120"
-
-style={{
-
-marginTop:"15px",
-
-borderRadius:"10px"
-
-}}
+className="logoPreview"
 
 />
 
 )}
+
 
 
 </div>
@@ -448,9 +484,18 @@ borderRadius:"10px"
 
 
 
-<div>
 
-<label>Dias de garantia</label>
+<div className="garantiaBox">
+
+
+<label>
+
+<ShieldCheck size={18}/>
+
+ Dias de garantia padrão
+
+</label>
+
 
 
 <input
@@ -478,12 +523,18 @@ onChange={alterar}
 
 
 
-<label>Mensagem do comprovante</label>
+<div className="mensagemBox">
+
+
+<label>
+
+Mensagem do comprovante
+
+</label>
+
 
 
 <textarea
-
-className="mensagem"
 
 name="mensagem"
 
@@ -494,23 +545,39 @@ onChange={alterar}
 />
 
 
+</div>
 
 
 
-<button onClick={salvar}>
+
+
+
+
+<button
+
+className="salvarEmpresa"
+
+onClick={salvar}
+
+>
+
 
 <Save size={18}/>
 
 Salvar Alterações
 
+
 </button>
 
 
 
+
+
 </div>
 
 
 </div>
+
 
 );
 
