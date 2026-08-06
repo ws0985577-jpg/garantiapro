@@ -21,20 +21,18 @@ import { useEffect, useState } from "react";
 
 function LayoutAdmin() {
 
-
   const navigate = useNavigate();
 
   const [menuAberto, setMenuAberto] = useState(false);
 
-  const [empresa,setEmpresa] = useState(null);
+  const [empresa, setEmpresa] = useState(null);
 
 
-
-  useEffect(()=>{
+  useEffect(() => {
 
     carregarEmpresa();
 
-  },[]);
+  }, []);
 
 
 
@@ -43,15 +41,26 @@ function LayoutAdmin() {
     const {data:{user}} = await supabase.auth.getUser();
 
 
-    if(!user) return;
+    if(!user){
+      navigate("/login");
+      return;
+    }
 
 
-
-    const {data} = await supabase
+    const {data, error} = await supabase
     .from("empresas")
     .select("*")
-    .eq("user_id",user.id)
+    .eq("user_id", user.id)
     .single();
+
+
+
+    if(error){
+
+      console.log(error);
+      return;
+
+    }
 
 
 
@@ -59,7 +68,20 @@ function LayoutAdmin() {
 
       setEmpresa(data);
 
+
+      // BLOQUEIA QUEM NÃO PAGOU
+      if(
+        data.status !== "ativo" &&
+        window.location.pathname !== "/admin/pagamento"
+      ){
+
+        navigate("/admin/pagamento");
+
+      }
+
+
     }
+
 
   }
 
@@ -95,13 +117,13 @@ function LayoutAdmin() {
       onClick={()=>setMenuAberto(!menuAberto)}
       >
 
-      {
-        menuAberto
-        ?
-        <X size={28}/>
-        :
-        <Menu size={28}/>
-      }
+        {
+          menuAberto
+          ?
+          <X size={28}/>
+          :
+          <Menu size={28}/>
+        }
 
       </button>
 
@@ -113,13 +135,13 @@ function LayoutAdmin() {
 
 
 
-
         <div className="sidebarBrand">
 
 
-
           {
-            empresa?.logo ?
+            empresa?.logo
+
+            ?
 
             <img
             src={empresa.logo}
@@ -130,13 +152,11 @@ function LayoutAdmin() {
 
             <span className="brandIcon">
 
-            <ShieldCheck size={25}/>
+              <ShieldCheck size={25}/>
 
             </span>
 
           }
-
-
 
 
 
@@ -146,9 +166,11 @@ function LayoutAdmin() {
               {empresa?.nome || "GarantiaPro"}
             </strong>
 
+
             <small>
               Sistema de Gestão
             </small>
+
 
           </div>
 
@@ -159,108 +181,108 @@ function LayoutAdmin() {
 
 
 
-
         <nav>
 
 
-        <NavLink onClick={fecharMenu} to="/admin" end>
+          <NavLink onClick={fecharMenu} to="/admin" end>
 
-        <LayoutDashboard size={20}/>
+            <LayoutDashboard size={20}/>
 
-        Dashboard
+            Dashboard
 
-        </NavLink>
-
-
-
-        <NavLink onClick={fecharMenu} to="/admin/nova-garantia">
-
-        <PlusCircle size={20}/>
-
-        Nova Garantia
-
-        </NavLink>
+          </NavLink>
 
 
 
 
-        <NavLink onClick={fecharMenu} to="/admin/clientes">
+          <NavLink onClick={fecharMenu} to="/admin/nova-garantia">
 
-        <Users size={20}/>
+            <PlusCircle size={20}/>
 
-        Clientes
+            Nova Garantia
 
-        </NavLink>
-
-
-
-
-        <NavLink onClick={fecharMenu} to="/admin/estoque">
-
-        <Package size={20}/>
-
-        Estoque
-
-        </NavLink>
+          </NavLink>
 
 
 
 
-        <NavLink onClick={fecharMenu} to="/admin/financeiro">
+          <NavLink onClick={fecharMenu} to="/admin/clientes">
 
-        <Wallet size={20}/>
+            <Users size={20}/>
 
-        Financeiro
+            Clientes
 
-        </NavLink>
-
-
-
-
-        <NavLink onClick={fecharMenu} to="/admin/ordem-servico">
-
-        <ClipboardList size={20}/>
-
-        Ordem de Serviço
-
-        </NavLink>
+          </NavLink>
 
 
 
 
-        <NavLink onClick={fecharMenu} to="/admin/ordens">
+          <NavLink onClick={fecharMenu} to="/admin/estoque">
 
-        <ClipboardList size={20}/>
+            <Package size={20}/>
 
-        Ordens Criadas
+            Estoque
 
-        </NavLink>
-
-
-
-
-        <NavLink onClick={fecharMenu} to="/admin/empresa">
-
-        <Building2 size={20}/>
-
-        Minha Assistência
-
-        </NavLink>
+          </NavLink>
 
 
 
-        <NavLink onClick={fecharMenu} to="/admin/pagamento">
 
-        <CreditCard size={20}/>
+          <NavLink onClick={fecharMenu} to="/admin/financeiro">
 
-        Planos
+            <Wallet size={20}/>
 
-        </NavLink>
+            Financeiro
+
+          </NavLink>
+
+
+
+
+          <NavLink onClick={fecharMenu} to="/admin/ordem-servico">
+
+            <ClipboardList size={20}/>
+
+            Ordem de Serviço
+
+          </NavLink>
+
+
+
+
+          <NavLink onClick={fecharMenu} to="/admin/ordens">
+
+            <ClipboardList size={20}/>
+
+            Ordens Criadas
+
+          </NavLink>
+
+
+
+
+          <NavLink onClick={fecharMenu} to="/admin/empresa">
+
+            <Building2 size={20}/>
+
+            Minha Assistência
+
+          </NavLink>
+
+
+
+
+          <NavLink onClick={fecharMenu} to="/admin/pagamento">
+
+            <CreditCard size={20}/>
+
+            Planos
+
+          </NavLink>
 
 
 
         </nav>
-
 
 
 
@@ -271,13 +293,11 @@ function LayoutAdmin() {
         onClick={encerrarSessao}
         >
 
-        <LogOut size={19}/>
+          <LogOut size={19}/>
 
-        Sair
+          Sair
 
         </button>
-
-
 
 
 
@@ -287,10 +307,9 @@ function LayoutAdmin() {
 
 
 
-
       <section className="adminContent">
 
-      <Outlet/>
+        <Outlet/>
 
       </section>
 
@@ -299,9 +318,7 @@ function LayoutAdmin() {
 
     </div>
 
-
   );
-
 
 }
 
