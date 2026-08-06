@@ -101,12 +101,16 @@ unit_price:valor
 
 payment_methods:{
 
-
-excluded_payment_types:[],
-
+excluded_payment_types:[
+{
+id:"ticket"
+},
+{
+id:"atm"
+}
+],
 
 installments:12
-
 
 },
 
