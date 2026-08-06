@@ -16,8 +16,7 @@ CreditCard,
 import {
 NavLink,
 Outlet,
-useNavigate,
-useLocation,
+useNavigate
 } from "react-router-dom";
 
 import { sair } from "../services/auth";
@@ -28,7 +27,6 @@ import { useEffect, useState } from "react";
 function LayoutAdmin(){
 
 const navigate = useNavigate();
-const location = useLocation();
 
 const [menuAberto,setMenuAberto] = useState(false);
 const [empresa,setEmpresa] = useState(null);
@@ -81,36 +79,33 @@ return;
 
 
 
-let liberar = false;
+let liberar=false;
 
 
 
-// PLANO PAGO OU TESTE
+// PAGO
+if(data.status==="ativo"){
 
-if(
-data.status === "ativo" ||
-data.status === "teste"
-){
-
-liberar = true;
+liberar=true;
 
 }
 
 
 
 // TESTE GRATIS
+if(
+data.status==="teste" &&
+data.data_fim
+){
 
-if(data.data_fim){
+const hoje=new Date();
 
-const hoje = new Date();
-
-const fim = new Date(data.data_fim);
-
+const fim=new Date(data.data_fim);
 
 
 if(hoje <= fim){
 
-liberar = true;
+liberar=true;
 
 }
 
@@ -125,11 +120,8 @@ liberar
 
 
 
-// BLOQUEIA APOS TESTE
-
 if(
-!liberar &&
-location.pathname !== "/admin/pagamento"
+!liberar
 ){
 
 navigate("/admin/pagamento");
@@ -145,7 +137,6 @@ setVerificando(false);
 
 
 
-
 function encerrarSessao(){
 
 sair();
@@ -156,17 +147,9 @@ navigate("/login");
 
 
 
-function fecharMenu(){
-
-setMenuAberto(false);
-
-}
-
-
-
 if(verificando){
 
-return <h2>Verificando plano...</h2>;
+return <h3>Verificando plano...</h3>;
 
 }
 
@@ -177,45 +160,17 @@ return (
 <div className="adminLayout">
 
 
-<button
-className="menuMobile"
-onClick={()=>setMenuAberto(!menuAberto)}
->
-
-{
-menuAberto
-?
-<X size={28}/>
-:
-<Menu size={28}/>
-}
-
-</button>
-
-
-
-<aside className={`sidebar ${menuAberto ? "ativo":""}`}>
+<aside className="sidebar">
 
 
 <div className="sidebarBrand">
 
 
-{
-empresa?.logo ?
-
-<img
-src={empresa.logo}
-className="logoEmpresaMenu"
-/>
-
-:
-
 <span className="brandIcon">
+
 <ShieldCheck size={25}/>
+
 </span>
-
-}
-
 
 
 <div>
@@ -223,6 +178,7 @@ className="logoEmpresaMenu"
 <strong>
 {empresa?.nome || "GarantiaPro"}
 </strong>
+
 
 <small>
 Sistema de Gestão
@@ -236,8 +192,8 @@ Sistema de Gestão
 
 
 
-
 <nav>
+
 
 
 {
@@ -247,50 +203,81 @@ empresa?.liberar &&
 
 
 <NavLink to="/admin">
+
 <LayoutDashboard size={20}/>
+
 Dashboard
+
 </NavLink>
+
 
 
 <NavLink to="/admin/nova-garantia">
+
 <PlusCircle size={20}/>
+
 Nova Garantia
+
 </NavLink>
+
 
 
 <NavLink to="/admin/clientes">
+
 <Users size={20}/>
+
 Clientes
+
 </NavLink>
+
 
 
 <NavLink to="/admin/estoque">
+
 <Package size={20}/>
+
 Estoque
+
 </NavLink>
+
 
 
 <NavLink to="/admin/financeiro">
+
 <Wallet size={20}/>
+
 Financeiro
+
 </NavLink>
+
 
 
 <NavLink to="/admin/ordem-servico">
+
 <ClipboardList size={20}/>
+
 Ordem de Serviço
+
 </NavLink>
+
 
 
 <NavLink to="/admin/ordens">
+
 <ClipboardList size={20}/>
+
 Ordens Criadas
+
 </NavLink>
 
 
+
 <NavLink to="/admin/empresa">
+
 <Building2 size={20}/>
+
 Minha Assistência
+
 </NavLink>
 
 
@@ -311,7 +298,6 @@ Planos
 
 
 </nav>
-
 
 
 
