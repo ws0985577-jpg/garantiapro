@@ -30,6 +30,7 @@ function LayoutAdmin(){
 const navigate = useNavigate();
 const location = useLocation();
 
+
 const [menuAberto,setMenuAberto] = useState(false);
 const [empresa,setEmpresa] = useState(null);
 const [verificando,setVerificando] = useState(true);
@@ -38,10 +39,9 @@ const [verificando,setVerificando] = useState(true);
 
 useEffect(()=>{
 
-carregarEmpresa();
+ carregarEmpresa();
 
 },[location.pathname]);
-
 
 
 
@@ -49,17 +49,17 @@ carregarEmpresa();
 async function carregarEmpresa(){
 
 const {
-data:{
-user
-}
+ data:{
+  user
+ }
 }= await supabase.auth.getUser();
 
 
 
 if(!user){
 
-navigate("/login");
-return;
+ navigate("/login");
+ return;
 
 }
 
@@ -83,50 +83,43 @@ return;
 
 
 
-let liberar=false;
+let liberar = false;
 
 
 
-// PAGAMENTO ATIVO
+// PLANO PAGO
 
-if(data.status==="ativo"){
+if(
+data.status === "ativo" &&
+data.plano_ativo
+){
 
-liberar=true;
+liberar = true;
 
 }
+
 
 
 
 // TESTE GRATIS 7 DIAS
 
-if(
-data.status==="inativo" &&
-data.data_inicio
-){
-
-const inicio = new Date(data.data_inicio);
+if(data.data_fim){
 
 const hoje = new Date();
 
-
-const diferenca =
-hoje - inicio;
-
-
-const dias =
-diferenca /
-(1000*60*60*24);
+const vencimento = new Date(
+data.data_fim
+);
 
 
 
-if(dias <= 7){
+if(hoje <= vencimento){
 
-liberar=true;
+liberar = true;
 
 }
 
 }
-
 
 
 
@@ -134,7 +127,6 @@ liberar=true;
 setEmpresa({
 
 ...data,
-
 liberar
 
 });
@@ -142,7 +134,7 @@ liberar
 
 
 
-// BLOQUEIO
+// BLOQUEAR QUANDO ACABAR
 
 if(
 !liberar &&
@@ -164,7 +156,6 @@ setVerificando(false);
 
 
 
-
 function encerrarSessao(){
 
 sair();
@@ -172,8 +163,6 @@ sair();
 navigate("/login");
 
 }
-
-
 
 
 
@@ -186,10 +175,13 @@ setMenuAberto(false);
 
 
 
-
 if(verificando){
 
-return <h3>Verificando plano...</h3>;
+return (
+<div>
+Verificando plano...
+</div>
+);
 
 }
 
@@ -200,7 +192,6 @@ return <h3>Verificando plano...</h3>;
 return (
 
 <div className="adminLayout">
-
 
 
 <button
@@ -216,14 +207,13 @@ menuAberto
 <Menu size={28}/>
 }
 
+
 </button>
 
 
 
 
-
 <aside className={`sidebar ${menuAberto ? "ativo":""}`}>
-
 
 
 
@@ -273,8 +263,8 @@ Sistema de Gestão
 
 
 
-
 <nav>
+
 
 
 
@@ -284,7 +274,6 @@ empresa?.liberar &&
 <>
 
 
-
 <NavLink to="/admin" end>
 
 <LayoutDashboard size={20}/>
@@ -292,7 +281,6 @@ empresa?.liberar &&
 Dashboard
 
 </NavLink>
-
 
 
 
@@ -306,7 +294,6 @@ Nova Garantia
 
 
 
-
 <NavLink to="/admin/clientes">
 
 <Users size={20}/>
@@ -314,7 +301,6 @@ Nova Garantia
 Clientes
 
 </NavLink>
-
 
 
 
@@ -328,7 +314,6 @@ Estoque
 
 
 
-
 <NavLink to="/admin/financeiro">
 
 <Wallet size={20}/>
@@ -336,7 +321,6 @@ Estoque
 Financeiro
 
 </NavLink>
-
 
 
 
@@ -350,7 +334,6 @@ Ordem de Serviço
 
 
 
-
 <NavLink to="/admin/ordens">
 
 <ClipboardList size={20}/>
@@ -358,7 +341,6 @@ Ordem de Serviço
 Ordens Criadas
 
 </NavLink>
-
 
 
 
@@ -389,9 +371,8 @@ Planos
 
 
 
+
 </nav>
-
-
 
 
 
@@ -406,10 +387,7 @@ onClick={encerrarSessao}
 
 Sair
 
-
 </button>
-
-
 
 
 
@@ -433,7 +411,6 @@ Sair
 
 
 }
-
 
 
 export default LayoutAdmin;
