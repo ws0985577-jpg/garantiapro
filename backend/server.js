@@ -1,8 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import axios from "axios";
-import { MercadoPagoConfig, Preference } from "mercadopago";
+import { MercadoPagoConfig, Preference, Payment } from "mercadopago";
 
 
 dotenv.config();
@@ -25,7 +24,6 @@ const client = new MercadoPagoConfig({
 
 
 
-// CRIAR PAGAMENTO
 
 app.post("/criar-pagamento", async (req,res)=>{
 
@@ -75,6 +73,8 @@ const preference = new Preference(client);
 
 
 
+
+
 const pagamento = await preference.create({
 
 body:{
@@ -98,6 +98,7 @@ unit_price:valor
 
 
 
+
 payment_methods:{
 
 
@@ -111,7 +112,9 @@ installments:12
 
 
 
+
 back_urls:{
+
 
 success:"https://garantiapro.com.br/admin",
 
@@ -119,7 +122,10 @@ failure:"https://garantiapro.com.br/admin/pagamento",
 
 pending:"https://garantiapro.com.br/admin/pagamento"
 
+
 }
+
+
 
 
 }
@@ -136,6 +142,7 @@ res.json({
 url:pagamento.init_point
 
 });
+
 
 
 
@@ -157,7 +164,9 @@ erro:"Erro ao criar pagamento"
 }
 
 
+
 });
+
 
 
 
@@ -167,89 +176,56 @@ erro:"Erro ao criar pagamento"
 
 // WEBHOOK MERCADO PAGO
 
-
 app.post("/webhook", async (req,res)=>{
 
 
 try{
 
 
-console.log("Webhook recebido:");
-
-console.log(req.body);
+console.log("Webhook recebido:",req.body);
 
 
 
-
-const pagamentoId = req.body.data?.id;
-
+if(req.body.type === "payment"){
 
 
+const idPagamento = req.body.data.id;
 
-if(!pagamentoId){
 
-return res.sendStatus(200);
+
+const payment = new Payment(client);
+
+
+
+const resultado = await payment.get({
+
+id:idPagamento
+
+});
+
+
+
+console.log("Status pagamento:", resultado.status);
+
+
+
+
+if(resultado.status === "approved"){
+
+
+console.log("Pagamento aprovado!");
+
+
 
 }
 
 
 
-
-
-const resposta = await axios.get(
-
-
-`https://api.mercadopago.com/v1/payments/${pagamentoId}`,
-
-
-{
-
-
-headers:{
-
-
-Authorization:`Bearer ${process.env.MP_ACCESS_TOKEN}`
-
-
 }
-
-
-}
-
-
-);
-
-
-
-
-
-const pagamento = resposta.data;
-
-
-
-console.log("Status pagamento:", pagamento.status);
-
-
-
-
-
-if(pagamento.status === "approved"){
-
-
-console.log("Pagamento aprovado ✅");
-
-
-// AQUI VAMOS LIBERAR O PLANO DO CLIENTE
-
-
-}
-
-
 
 
 
 res.sendStatus(200);
-
 
 
 
@@ -265,7 +241,25 @@ res.sendStatus(500);
 }
 
 
+
 });
+
+
+
+
+
+
+
+
+app.get("/",(req,res)=>{
+
+
+res.send("GarantiaPro API Online");
+
+
+});
+
+
 
 
 
