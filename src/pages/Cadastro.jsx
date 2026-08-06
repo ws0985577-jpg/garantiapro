@@ -6,14 +6,17 @@ function Cadastro(){
 
 const navigate = useNavigate();
 
+
 const [dados,setDados] = useState({
 empresa:"",
 email:"",
 senha:"",
-confirmarSenha:""
+confirmarSenha:"",
 });
 
+
 const [erro,setErro] = useState("");
+
 
 
 function alterar(e){
@@ -24,6 +27,7 @@ setDados({
 });
 
 }
+
 
 
 
@@ -44,21 +48,17 @@ return;
 
 
 
-// cria usuário
 
-const {data,error} = await supabase.auth.signUp({
+// CRIA USUARIO
+
+const {
+data,
+error
+}= await supabase.auth.signUp({
 
 email:dados.email,
 
-password:dados.senha,
-
-options:{
-
-data:{
-empresa:dados.empresa
-}
-
-}
+password:dados.senha
 
 });
 
@@ -77,9 +77,30 @@ const user = data.user;
 
 
 
-// cria empresa com 7 dias grátis
+if(!user){
 
-await supabase
+setErro("Erro criando usuário");
+return;
+
+}
+
+
+
+
+// CRIA EMPRESA COM TESTE GRATIS
+
+const hoje = new Date();
+
+
+const fimTeste = new Date();
+
+fimTeste.setDate(
+fimTeste.getDate()+7
+);
+
+
+
+const {error:erroEmpresa}= await supabase
 .from("empresas")
 .insert({
 
@@ -87,21 +108,37 @@ user_id:user.id,
 
 nome:dados.empresa,
 
-status:"teste",
-
 plano:"Teste Grátis",
 
-data_inicio:new Date(),
+status:"teste",
 
-data_fim:new Date(
-Date.now() + 7 * 24 * 60 * 60 * 1000
-)
+data_inicio:hoje,
+
+data_fim:fimTeste
 
 });
 
 
 
-alert("Conta criada! Você tem 7 dias grátis.");
+if(erroEmpresa){
+
+console.log(erroEmpresa);
+
+setErro(
+"Erro criando empresa"
+);
+
+return;
+
+}
+
+
+
+alert(
+"Conta criada! Você tem 7 dias grátis."
+);
+
+
 
 navigate("/login");
 
@@ -110,67 +147,109 @@ navigate("/login");
 
 
 
-return (
+return(
 
 <div className="loginCard">
 
 
-<h1>Criar conta</h1>
+<h1>
+Criar conta
+</h1>
+
 
 <p>
 Cadastre sua assistência no GarantiaPro
 </p>
 
 
+
+<form onSubmit={criarConta}>
+
+
 <input
+
 name="empresa"
+
 placeholder="Nome da empresa"
+
 value={dados.empresa}
+
 onChange={alterar}
+
+required
+
 />
 
 
 
 <input
+
 type="email"
+
 name="email"
+
 placeholder="Digite seu Gmail"
+
 value={dados.email}
+
 onChange={alterar}
+
+required
+
 />
 
 
 
 <input
+
 type="password"
+
 name="senha"
+
 placeholder="Crie uma senha"
+
 value={dados.senha}
+
 onChange={alterar}
+
+required
+
 />
 
 
 
 <input
+
 type="password"
+
 name="confirmarSenha"
+
 placeholder="Digite a senha novamente"
+
 value={dados.confirmarSenha}
+
 onChange={alterar}
+
+required
+
 />
 
 
 
 {
 erro &&
-<p>{erro}</p>
+
+<p>
+{erro}
+</p>
+
 }
 
 
 
 <button
 className="btn btnPrimary loginButton"
-onClick={criarConta}
+type="submit"
 >
 
 Criar conta
@@ -178,14 +257,21 @@ Criar conta
 </button>
 
 
+</form>
+
+
+
 <Link to="/login">
+
 Já tenho conta
+
 </Link>
 
 
 </div>
 
 );
+
 
 }
 
