@@ -13,7 +13,7 @@ import {
   CreditCard,
 } from "lucide-react";
 
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { sair } from "../services/auth";
 import { supabase } from "../services/supabase";
 import { useEffect, useState } from "react";
@@ -23,6 +23,8 @@ function LayoutAdmin() {
 
 
 const navigate = useNavigate();
+
+const location = useLocation();
 
 
 const [menuAberto,setMenuAberto] = useState(false);
@@ -38,8 +40,7 @@ useEffect(()=>{
 
 carregarEmpresa();
 
-},[]);
-
+},[location.pathname]);
 
 
 
@@ -49,7 +50,6 @@ async function carregarEmpresa(){
 
 
 const {data:{user}} = await supabase.auth.getUser();
-
 
 
 if(!user){
@@ -63,17 +63,11 @@ return;
 
 
 
-
 const {data,error} = await supabase
-
 .from("empresas")
-
 .select("*")
-
 .eq("user_id",user.id)
-
 .single();
-
 
 
 
@@ -91,33 +85,20 @@ return;
 
 
 
-
-
-if(data){
-
-
 setEmpresa(data);
 
 
 
 
-// BLOQUEIO DE PLANO
-
 if(
 
 data.status !== "ativo" &&
 
-window.location.pathname !== "/admin/pagamento"
+location.pathname !== "/admin/pagamento"
 
 ){
 
-
 navigate("/admin/pagamento");
-
-
-}
-
-
 
 }
 
@@ -128,7 +109,6 @@ setVerificando(false);
 
 
 }
-
 
 
 
@@ -147,12 +127,12 @@ navigate("/login");
 
 
 
-
 function fecharMenu(){
 
 setMenuAberto(false);
 
 }
+
 
 
 
@@ -165,11 +145,10 @@ if(verificando){
 return (
 
 <div style={{
-display:"flex",
-justifyContent:"center",
-alignItems:"center",
 height:"100vh",
-fontSize:"20px"
+display:"flex",
+alignItems:"center",
+justifyContent:"center"
 }}>
 
 Verificando plano...
@@ -186,6 +165,7 @@ Verificando plano...
 
 
 
+
 return (
 
 
@@ -196,26 +176,17 @@ return (
 
 
 <button
-
 className="menuMobile"
-
 onClick={()=>setMenuAberto(!menuAberto)}
-
 >
 
 
 {
-
 menuAberto
-
 ?
-
 <X size={28}/>
-
 :
-
 <Menu size={28}/>
-
 }
 
 
@@ -232,27 +203,18 @@ menuAberto
 
 
 
-
-
 <div className="sidebarBrand">
 
 
-
 {
-
 empresa?.logo
 
 ?
 
-
 <img
-
 src={empresa.logo}
-
 className="logoEmpresaMenu"
-
 />
-
 
 :
 
@@ -262,22 +224,17 @@ className="logoEmpresaMenu"
 
 </span>
 
-
 }
 
 
 
-
-
 <div>
-
 
 <strong>
 
 {empresa?.nome || "GarantiaPro"}
 
 </strong>
-
 
 
 <small>
@@ -288,7 +245,6 @@ Sistema de Gestão
 
 
 </div>
-
 
 
 </div>
@@ -304,9 +260,13 @@ Sistema de Gestão
 
 
 
+{
+empresa?.status === "ativo" &&
+
+<>
 
 
-<NavLink onClick={fecharMenu} to="/admin" end>
+<NavLink to="/admin">
 
 <LayoutDashboard size={20}/>
 
@@ -316,9 +276,7 @@ Dashboard
 
 
 
-
-
-<NavLink onClick={fecharMenu} to="/admin/nova-garantia">
+<NavLink to="/admin/nova-garantia">
 
 <PlusCircle size={20}/>
 
@@ -328,9 +286,7 @@ Nova Garantia
 
 
 
-
-
-<NavLink onClick={fecharMenu} to="/admin/clientes">
+<NavLink to="/admin/clientes">
 
 <Users size={20}/>
 
@@ -340,9 +296,7 @@ Clientes
 
 
 
-
-
-<NavLink onClick={fecharMenu} to="/admin/estoque">
+<NavLink to="/admin/estoque">
 
 <Package size={20}/>
 
@@ -352,9 +306,7 @@ Estoque
 
 
 
-
-
-<NavLink onClick={fecharMenu} to="/admin/financeiro">
+<NavLink to="/admin/financeiro">
 
 <Wallet size={20}/>
 
@@ -364,9 +316,7 @@ Financeiro
 
 
 
-
-
-<NavLink onClick={fecharMenu} to="/admin/ordem-servico">
+<NavLink to="/admin/ordem-servico">
 
 <ClipboardList size={20}/>
 
@@ -376,9 +326,7 @@ Ordem de Serviço
 
 
 
-
-
-<NavLink onClick={fecharMenu} to="/admin/ordens">
+<NavLink to="/admin/ordens">
 
 <ClipboardList size={20}/>
 
@@ -388,9 +336,7 @@ Ordens Criadas
 
 
 
-
-
-<NavLink onClick={fecharMenu} to="/admin/empresa">
+<NavLink to="/admin/empresa">
 
 <Building2 size={20}/>
 
@@ -399,19 +345,20 @@ Minha Assistência
 </NavLink>
 
 
+</>
+
+}
 
 
 
-<NavLink onClick={fecharMenu} to="/admin/pagamento">
+
+<NavLink to="/admin/pagamento">
 
 <CreditCard size={20}/>
 
 Planos
 
 </NavLink>
-
-
-
 
 
 
@@ -425,11 +372,8 @@ Planos
 
 
 <button
-
 className="logoutButton"
-
 onClick={encerrarSessao}
-
 >
 
 
@@ -444,9 +388,7 @@ Sair
 
 
 
-
 </aside>
-
 
 
 
@@ -455,12 +397,9 @@ Sair
 
 <section className="adminContent">
 
-
 <Outlet/>
 
-
 </section>
-
 
 
 
@@ -472,8 +411,8 @@ Sair
 );
 
 
-}
 
+}
 
 
 export default LayoutAdmin;
