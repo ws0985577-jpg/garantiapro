@@ -1,23 +1,23 @@
 import {
-  LayoutDashboard,
-  LogOut,
-  Package,
-  PlusCircle,
-  ShieldCheck,
-  Users,
-  Wallet,
-  Building2,
-  ClipboardList,
-  Menu,
-  X,
-  CreditCard,
+LayoutDashboard,
+LogOut,
+Package,
+PlusCircle,
+ShieldCheck,
+Users,
+Wallet,
+Building2,
+ClipboardList,
+Menu,
+X,
+CreditCard,
 } from "lucide-react";
 
 import {
-  NavLink,
-  Outlet,
-  useNavigate,
-  useLocation,
+NavLink,
+Outlet,
+useNavigate,
+useLocation,
 } from "react-router-dom";
 
 import { sair } from "../services/auth";
@@ -30,7 +30,6 @@ function LayoutAdmin(){
 const navigate = useNavigate();
 const location = useLocation();
 
-
 const [menuAberto,setMenuAberto] = useState(false);
 const [empresa,setEmpresa] = useState(null);
 const [verificando,setVerificando] = useState(true);
@@ -39,27 +38,26 @@ const [verificando,setVerificando] = useState(true);
 
 useEffect(()=>{
 
- carregarEmpresa();
+carregarEmpresa();
 
-},[location.pathname]);
-
+},[]);
 
 
 
 async function carregarEmpresa(){
 
 const {
- data:{
-  user
- }
+data:{
+user
+}
 }= await supabase.auth.getUser();
 
 
 
 if(!user){
 
- navigate("/login");
- return;
+navigate("/login");
+return;
 
 }
 
@@ -89,10 +87,7 @@ let liberar = false;
 
 // PLANO PAGO
 
-if(
-data.status === "ativo" &&
-data.plano_ativo
-){
+if(data.status === "ativo"){
 
 liberar = true;
 
@@ -100,20 +95,17 @@ liberar = true;
 
 
 
-
-// TESTE GRATIS 7 DIAS
+// TESTE GRATIS
 
 if(data.data_fim){
 
 const hoje = new Date();
 
-const vencimento = new Date(
-data.data_fim
-);
+const fim = new Date(data.data_fim);
 
 
 
-if(hoje <= vencimento){
+if(hoje <= fim){
 
 liberar = true;
 
@@ -123,18 +115,14 @@ liberar = true;
 
 
 
-
 setEmpresa({
-
 ...data,
 liberar
-
 });
 
 
 
-
-// BLOQUEAR QUANDO ACABAR
+// BLOQUEIA APOS TESTE
 
 if(
 !liberar &&
@@ -148,7 +136,6 @@ navigate("/admin/pagamento");
 
 
 setVerificando(false);
-
 
 
 }
@@ -174,18 +161,11 @@ setMenuAberto(false);
 
 
 
-
 if(verificando){
 
-return (
-<div>
-Verificando plano...
-</div>
-);
+return <h2>Verificando plano...</h2>;
 
 }
-
-
 
 
 
@@ -207,14 +187,11 @@ menuAberto
 <Menu size={28}/>
 }
 
-
 </button>
 
 
 
-
 <aside className={`sidebar ${menuAberto ? "ativo":""}`}>
-
 
 
 <div className="sidebarBrand">
@@ -231,9 +208,7 @@ className="logoEmpresaMenu"
 :
 
 <span className="brandIcon">
-
 <ShieldCheck size={25}/>
-
 </span>
 
 }
@@ -243,11 +218,8 @@ className="logoEmpresaMenu"
 <div>
 
 <strong>
-
 {empresa?.nome || "GarantiaPro"}
-
 </strong>
-
 
 <small>
 Sistema de Gestão
@@ -262,10 +234,7 @@ Sistema de Gestão
 
 
 
-
 <nav>
-
-
 
 
 {
@@ -274,90 +243,57 @@ empresa?.liberar &&
 <>
 
 
-<NavLink to="/admin" end>
-
+<NavLink to="/admin">
 <LayoutDashboard size={20}/>
-
 Dashboard
-
 </NavLink>
-
 
 
 <NavLink to="/admin/nova-garantia">
-
 <PlusCircle size={20}/>
-
 Nova Garantia
-
 </NavLink>
-
 
 
 <NavLink to="/admin/clientes">
-
 <Users size={20}/>
-
 Clientes
-
 </NavLink>
-
 
 
 <NavLink to="/admin/estoque">
-
 <Package size={20}/>
-
 Estoque
-
 </NavLink>
-
 
 
 <NavLink to="/admin/financeiro">
-
 <Wallet size={20}/>
-
 Financeiro
-
 </NavLink>
-
 
 
 <NavLink to="/admin/ordem-servico">
-
 <ClipboardList size={20}/>
-
 Ordem de Serviço
-
 </NavLink>
-
 
 
 <NavLink to="/admin/ordens">
-
 <ClipboardList size={20}/>
-
 Ordens Criadas
-
 </NavLink>
 
 
-
 <NavLink to="/admin/empresa">
-
 <Building2 size={20}/>
-
 Minha Assistência
-
 </NavLink>
 
 
 </>
 
 }
-
-
 
 
 
@@ -371,9 +307,7 @@ Planos
 
 
 
-
 </nav>
-
 
 
 
@@ -392,8 +326,6 @@ Sair
 
 
 </aside>
-
-
 
 
 
