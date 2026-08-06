@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "../services/supabase";
 
+
 function Cadastro(){
 
 const navigate = useNavigate();
@@ -39,6 +40,8 @@ setErro("");
 
 
 
+// CONFERE SENHA
+
 if(dados.senha !== dados.confirmarSenha){
 
 setErro("As senhas não conferem");
@@ -49,11 +52,12 @@ return;
 
 
 
-// CRIA USUARIO
+// CRIA LOGIN
 
 const {
 data,
 error
+
 }= await supabase.auth.signUp({
 
 email:dados.email,
@@ -87,7 +91,31 @@ return;
 
 
 
-// CRIA EMPRESA COM TESTE GRATIS
+
+// VERIFICA SE JÁ EXISTE EMPRESA
+
+const {
+data:empresaExiste
+
+}= await supabase
+
+.from("empresas")
+
+.select("id")
+
+.eq("user_id",user.id)
+
+.maybeSingle();
+
+
+
+
+
+
+// SE NÃO EXISTIR CRIA
+
+if(!empresaExiste){
+
 
 const hoje = new Date();
 
@@ -100,13 +128,22 @@ fimTeste.getDate()+7
 
 
 
-const {error:erroEmpresa}= await supabase
+
+
+const {
+error:erroEmpresa
+
+}= await supabase
+
 .from("empresas")
+
 .insert({
 
 user_id:user.id,
 
 nome:dados.empresa,
+
+email:dados.email,
 
 plano:"Teste Grátis",
 
@@ -116,7 +153,10 @@ data_inicio:hoje,
 
 data_fim:fimTeste
 
+
 });
+
+
 
 
 
@@ -134,6 +174,12 @@ return;
 
 
 
+}
+
+
+
+
+
 alert(
 "Conta criada! Você tem 7 dias grátis."
 );
@@ -142,28 +188,21 @@ alert(
 
 navigate("/login");
 
-
 }
+
+
 
 
 
 return(
 
-<div className="loginCard">
+<div>
 
 
 <h1>
 Criar conta
 </h1>
 
-
-<p>
-Cadastre sua assistência no GarantiaPro
-</p>
-
-
-
-<form onSubmit={criarConta}>
 
 
 <input
@@ -224,7 +263,7 @@ type="password"
 
 name="confirmarSenha"
 
-placeholder="Digite a senha novamente"
+placeholder="Confirme a senha"
 
 value={dados.confirmarSenha}
 
@@ -240,16 +279,24 @@ required
 erro &&
 
 <p>
+
 {erro}
+
 </p>
 
 }
 
 
 
+
 <button
+
 className="btn btnPrimary loginButton"
+
 type="submit"
+
+onClick={criarConta}
+
 >
 
 Criar conta
@@ -257,8 +304,9 @@ Criar conta
 </button>
 
 
-</form>
 
+
+<br/>
 
 
 <Link to="/login">
@@ -268,12 +316,14 @@ Já tenho conta
 </Link>
 
 
+
 </div>
 
 );
 
 
 }
+
 
 
 export default Cadastro;
