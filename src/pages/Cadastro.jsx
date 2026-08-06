@@ -1,22 +1,19 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "../services/supabase";
 
 function Cadastro(){
 
 const navigate = useNavigate();
 
-
 const [dados,setDados] = useState({
 empresa:"",
 email:"",
 senha:"",
-confirmarSenha:"",
+confirmarSenha:""
 });
 
-
 const [erro,setErro] = useState("");
-
 
 
 function alterar(e){
@@ -30,7 +27,6 @@ setDados({
 
 
 
-
 async function criarConta(e){
 
 e.preventDefault();
@@ -41,17 +37,16 @@ setErro("");
 
 if(dados.senha !== dados.confirmarSenha){
 
-setErro("As senhas não conferem.");
+setErro("As senhas não conferem");
 return;
 
 }
 
 
 
+// cria usuário
 
-// CRIA USUÁRIO
-
-const {data:userData,error:userError} = await supabase.auth.signUp({
+const {data,error} = await supabase.auth.signUp({
 
 email:dados.email,
 
@@ -69,96 +64,49 @@ empresa:dados.empresa
 
 
 
+if(error){
 
-if(userError){
-
-setErro(userError.message);
+setErro(error.message);
 return;
 
 }
 
 
 
-
-const user = userData.user;
-
+const user = data.user;
 
 
 
-if(user){
+// cria empresa com 7 dias grátis
 
-
-// DATA FINAL DO TESTE 7 DIAS
-
-const dataFim = new Date();
-
-dataFim.setDate(
-dataFim.getDate()+7
-);
-
-
-
-
-// CRIA EMPRESA
-
-const {error:empresaError} = await supabase
-
+await supabase
 .from("empresas")
-
 .insert({
-
-nome:dados.empresa,
-
-email:dados.email,
 
 user_id:user.id,
 
+nome:dados.empresa,
+
+status:"teste",
+
 plano:"Teste Grátis",
-
-plano_ativo:"Teste",
-
-status:"ativo",
 
 data_inicio:new Date(),
 
-data_fim:dataFim
+data_fim:new Date(
+Date.now() + 7 * 24 * 60 * 60 * 1000
+)
 
 });
 
 
 
-
-if(empresaError){
-
-console.log(empresaError);
-
-setErro(
-"Erro ao criar empresa"
-);
-
-return;
-
-}
-
-
-
-}
-
-
-
-
-
-alert(
-"Conta criada! Você tem 7 dias grátis."
-);
-
-
+alert("Conta criada! Você tem 7 dias grátis.");
 
 navigate("/login");
 
+
 }
-
-
 
 
 
@@ -167,112 +115,62 @@ return (
 <div className="loginCard">
 
 
-<h1>
-Criar conta
-</h1>
-
+<h1>Criar conta</h1>
 
 <p>
 Cadastre sua assistência no GarantiaPro
 </p>
 
 
-
 <input
-
 name="empresa"
-
 placeholder="Nome da empresa"
-
 value={dados.empresa}
-
 onChange={alterar}
-
-required
-
 />
 
 
 
-
 <input
-
 type="email"
-
 name="email"
-
 placeholder="Digite seu Gmail"
-
 value={dados.email}
-
 onChange={alterar}
-
-required
-
 />
 
 
 
-
 <input
-
 type="password"
-
 name="senha"
-
 placeholder="Crie uma senha"
-
 value={dados.senha}
-
 onChange={alterar}
-
-required
-
 />
-
-
 
 
 
 <input
-
 type="password"
-
 name="confirmarSenha"
-
 placeholder="Digite a senha novamente"
-
 value={dados.confirmarSenha}
-
 onChange={alterar}
-
-required
-
 />
-
 
 
 
 {
 erro &&
-
-<p>
-{erro}
-</p>
-
+<p>{erro}</p>
 }
 
 
 
-
 <button
-
 className="btn btnPrimary loginButton"
-
-type="submit"
-
 onClick={criarConta}
-
 >
 
 Criar conta
@@ -280,26 +178,14 @@ Criar conta
 </button>
 
 
-
-
-<Link
-
-to="/login"
-
-className="backLink"
-
->
-
+<Link to="/login">
 Já tenho conta
-
 </Link>
-
 
 
 </div>
 
 );
-
 
 }
 
