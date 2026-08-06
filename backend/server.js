@@ -113,16 +113,13 @@ installments:12
 
 back_urls:{
 
+success:"https://garantiapro.com.br/admin",
 
-success:"https://www.mercadopago.com.br",
+failure:"https://garantiapro.com.br/admin/pagamento",
 
-failure:"https://www.mercadopago.com.br",
-
-pending:"https://www.mercadopago.com.br"
-
+pending:"https://garantiapro.com.br/admin/pagamento"
 
 }
-
 
 
 }
